@@ -149,24 +149,10 @@ private fun TodayContent(
     var contextSheetItem by remember { mutableStateOf<TimelineItem?>(null) }
     var doneSectionExpanded by rememberSaveable { mutableStateOf(false) }
 
-    Scaffold(
-        containerColor = MaterialTheme.colorScheme.background,
-        topBar = {
-            TopAppBar(
-                title = { PawPillWordmark(badgeSize = 30.dp, textSize = 20) },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent,
-                    scrolledContainerColor = Brand.Canvas,
-                ),
-            )
-        },
-    ) { padding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            contentPadding = PaddingValues(bottom = 120.dp),
-        ) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(bottom = 120.dp),
+    ) {
             // ── Header ──────────────────────────────────────────────────────
             item {
                 TodayHeader(
@@ -295,9 +281,8 @@ private fun TodayContent(
                 }
             }
         }
-    }
 
-    // ── Mark-as-Taken sheet ──────────────────────────────────────────────
+    // ── Mark-as-Taken sheet
     takenSheetItem?.let { item ->
         MarkAsTakenSheet(
             item = item,

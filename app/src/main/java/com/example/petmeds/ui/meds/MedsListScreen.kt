@@ -88,14 +88,6 @@ fun MedsListScreen(
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
-        topBar = {
-            TopAppBar(
-                title = { PawPillWordmark(badgeSize = 30.dp, textSize = 20) },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                ),
-            )
-        },
         snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
             Column(
