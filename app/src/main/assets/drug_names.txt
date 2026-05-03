@@ -1,0 +1,566 @@
+# India Pet Drug Dictionary
+# Generic INN names + Indian brand names for veterinary use
+# Format: one name per line, lowercase. Lines starting with # are comments.
+# Sources: common Indian veterinary formulary, CDSCO-registered vet drugs,
+#          Zoetis India, Virbac India, Cipla Vet, Intas Pharma, Elanco India.
+
+# ── Antibiotics & Antibacterials ─────────────────────────────────────────────
+
+# Penicillins
+amoxicillin
+amoxycillin
+amoxil
+novamox
+wymox
+mox
+amoxyclav
+amoxicillin-clavulanate
+amoxycillin-clavulanic acid
+augmentin
+clavam
+clavamox
+synulox
+ampicillin
+ampivet
+penvet
+
+# Cephalosporins
+cephalexin
+cefalexin
+sporidex
+cefadroxil
+droxyl
+cefpodoxime
+cefpet
+ceftiofur
+excenel
+ceftriaxone
+monocef
+cefazolin
+
+# Fluoroquinolones
+enrofloxacin
+enrovet
+baytril
+quinovet
+enrox
+enrocin
+marbofloxacin
+marbocyl
+marbovet
+ciprofloxacin
+ciplox
+cifran
+norfloxacin
+norflox
+ofloxacin
+zanocin
+
+# Tetracyclines
+doxycycline
+doxy
+doxyvet
+vibramycin
+tetracycline
+oxytetracycline
+terramycin
+oxyvet
+
+# Macrolides
+azithromycin
+azithral
+zithromax
+erythromycin
+erythrocin
+tylosin
+tylan
+
+# Nitroimidazoles
+metronidazole
+flagyl
+metrogyl
+metrovet
+tinidazole
+tiniba
+secnidazole
+ornidazole
+
+# Sulfonamides
+sulfamethoxazole
+trimethoprim
+septran
+cotrimoxazole
+trimethoprim-sulfamethoxazole
+
+# Others
+chloramphenicol
+gentamicin
+tobramycin
+neomycin
+lincomycin
+clindamycin
+dalacin
+
+# ── Anti-inflammatory & Pain ──────────────────────────────────────────────────
+
+# NSAIDs
+meloxicam
+melonex
+mobivet
+metacam
+movon
+piroxicam
+carprofen
+rimadyl
+canidryl
+onsior
+robenacoxib
+ketoprofen
+ketovet
+ketorol
+diclofenac
+voveran
+aspirin
+disprin
+firocoxib
+previcox
+
+# Corticosteroids
+prednisolone
+omnacortil
+wysolone
+predsol
+betamethasone
+betnesol
+betnovate
+dexamethasone
+dexona
+decadron
+depomedrol
+hydrocortisone
+cortisyl
+triamcinolone
+kenacort
+methylprednisolone
+
+# Opioids / analgesics
+tramadol
+tramazac
+ultracet
+buprenorphine
+butorphanol
+torbugesic
+pentazocine
+fortwin
+paracetamol
+crocin
+calpol
+dolo
+
+# ── Antiparasitic ─────────────────────────────────────────────────────────────
+
+# Anthelmintics
+fenbendazole
+fenben
+panacur
+safeguard
+albendazole
+zentel
+albenzol
+mebendazole
+pyrantel
+combantrin
+praziquantel
+droncit
+drontal
+milbemycin
+milbemax
+ivermectin
+ivomec
+ivoril
+ivercide
+eqvalan
+moxidectin
+advocate
+selamectin
+revolution
+strongid
+oxantel
+
+# Ectoparasiticides
+fipronil
+frontline
+frontect
+fiprofort
+itraflea
+imidacloprid
+advantage
+bravecto
+fluralaner
+permethrin
+deltamethrin
+cypermethrin
+spinosad
+comfortis
+afoxolaner
+nexgard
+sarolaner
+simparica
+lotilaner
+credelio
+pyriproxyfen
+lufenuron
+program
+
+# ── Antifungal ───────────────────────────────────────────────────────────────
+
+itraconazole
+canditral
+itrasys
+fluconazole
+forcan
+diflucan
+ketoconazole
+nizoral
+ketovid
+griseofulvin
+clotrimazole
+canesten
+miconazole
+terbinafine
+lamisil
+voriconazole
+
+# ── Antihistamines & Allergy ─────────────────────────────────────────────────
+
+oclacitinib
+apoquel
+chlorpheniramine
+avil
+lorfast
+cetirizine
+cetzine
+zyrtec
+fexofenadine
+allegra
+levocetirizine
+levocet
+xyzal
+hydroxyzine
+atarax
+diphenhydramine
+benadryl
+promethazine
+phenergan
+cyproheptadine
+practin
+
+# ── Gastrointestinal ─────────────────────────────────────────────────────────
+
+metoclopramide
+perinorm
+reglan
+maropitant
+cerenia
+ondansetron
+emeset
+ondem
+domperidone
+domstal
+omeprazole
+omez
+prilosec
+ranitidine
+zantac
+pantoprazole
+pantop
+famotidine
+pepcid
+sucralfate
+sucrafil
+misoprostol
+lactulose
+duphalac
+bisacodyl
+dulcolax
+kaolin
+neomix-oral
+loperamide
+imodium
+simethicone
+cremaffin
+
+# ── Cardiac & Diuretic ───────────────────────────────────────────────────────
+
+furosemide
+lasix
+frusemide
+frusid
+pimobendan
+vetmedin
+atenolol
+tenormin
+digoxin
+lanoxin
+amlodipine
+norvasc
+enalapril
+enacard
+vasotec
+benazepril
+fortekor
+spironolactone
+aldactone
+torasemide
+dytor
+diltiazem
+cardizem
+
+# ── Respiratory ──────────────────────────────────────────────────────────────
+
+theophylline
+aminophylline
+salbutamol
+asthalin
+ventolin
+terbutaline
+bricanyl
+beclomethasone
+ipratropium
+atrovent
+guaifenesin
+bromhexine
+bisolvon
+
+# ── Thyroid & Hormonal ───────────────────────────────────────────────────────
+
+levothyroxine
+eltroxin
+thyronorm
+methimazole
+neomercazole
+thiamazole
+megestrol
+ovaban
+medroxyprogesterone
+depo-provera
+deslorelin
+suprelorin
+
+# ── Sedatives, Anaesthetics & Behaviour ──────────────────────────────────────
+
+acepromazine
+aceprom
+triflupromazine
+siquil
+diazepam
+valium
+calmpose
+midazolam
+alprazolam
+alprax
+phenobarbitone
+phenobarbital
+gardenal
+potassium bromide
+ketamine
+ketalar
+xylazine
+rompun
+propofol
+tiopentone
+medetomidine
+dorbene
+dexmedetomidine
+selegiline
+anipryl
+clomipramine
+clomicalm
+fluoxetine
+prozac
+fludac
+trazodone
+
+# ── Ophthalmology ────────────────────────────────────────────────────────────
+
+tobramycin drops
+ciprofloxacin drops
+ofloxacin drops
+gentamicin drops
+dexamethasone drops
+prednisolone drops
+timolol
+latanoprost
+xalatan
+pilocarpine
+dorzolamide
+cyclosporine
+optimmune
+
+# ── Dermatology ──────────────────────────────────────────────────────────────
+
+cyclosporine
+atopica
+tacrolimus
+betamethasone cream
+clobetasol
+dermacort
+chlorhexidine
+hexisol
+povidone iodine
+betadine
+silver sulfadiazine
+soframycin
+fusidic acid
+mupirocin
+bactroban
+selenium sulfide
+ketoconazole shampoo
+
+# ── Vaccines & Biologics (for recognition only) ──────────────────────────────
+
+canigen
+nobivac
+kavak
+vanguard
+defensor
+rabisin
+canvac
+parvovax
+biocan
+primodog
+eurican
+
+# ── Supplements & Nutraceuticals ─────────────────────────────────────────────
+
+zincovit
+zincovit vet
+himalaya
+liv 52 vet
+livercare
+coatex
+omega 3
+fish oil
+calcium sandoz
+calcitriol
+vitamin e
+vitamin b12
+cyanocobalamin
+neurobion
+folic acid
+iron sucrose
+ferrous sulfate
+glucosamine
+chondroitin
+cartijoint
+cosequin
+synovi
+l-carnitine
+taurine
+potassium citrate
+ursodeoxycholic acid
+udiliv
+silymarin
+
+# ── Common Indian Combination Products ───────────────────────────────────────
+
+norflox-tz
+norfloxacin tinidazole
+metrogyl-p
+amoxyclav 625
+augmentin 625
+cifran od
+doxy 1
+doxycycline 100
+sporidex af
+cefpodoxime 200
+baytril 50
+enrofloxacin 50mg
+melonex 1.5
+meloxicam 1.5mg
+dexona injection
+betnesol injection
+wysolone 5
+wysolone 10
+wysolone 20
+omnacortil 5
+omnacortil 10
+flagyl 400
+metronidazole 400
+perinorm injection
+lasix 40
+furosemide 40
+atenolol 25
+atenolol 50
+phenobarbitone 30
+phenobarbitone 60
+
+# ── Antifungal Shampoos & Topicals ───────────────────----------------------------------------------------------------
+
+sebifin
+terbinafine cream
+onabet
+sertaconazole
+lulifin
+luliconazole
+nizoral shampoo
+ketosys
+ketoconazole shampoo
+
+# ── Ear Preparations ─────────────────────────────────────────────────────────
+
+surolan
+otomax
+mometamax
+tresaderm
+aurizon
+epi-otic
+claro
+osurnia
+
+# ── Flea & Tick Spot-ons (Indian market) ─────────────────────────────────────
+
+frontline plus
+frontline spray
+fiprofort plus
+bravecto spot-on
+nexgard spectra
+advocate spot-on
+revolution plus
+simparica trio
+advantix
+effitix
+scalibor
+
+# ── Antidotes & Emergency ────────────────────────────────────────────────────
+
+atropine
+naloxone
+narcan
+pyridostigmine
+neostigmine
+vitamin k1
+phytomenadione
+calcium gluconate
+sodium bicarbonate
+dextrose
+mannitol
+acetylcysteine
+
+# ── Renal & Urinary ──────────────────────────────────────────────────────────
+
+ammonium chloride
+prazosin
+phenoxybenzamine
+bethanechol
+urocit
+cranberry extract
+propantheline
+
+# ── Dental ───────────────────────────────────────────────────────────────────
+
+chlorhexidine gel
+hexigel
+metronidazole gel
+clindamycin dental
+doxycycline dental
