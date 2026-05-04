@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.petmeds.data.ocr.OcrMedResult
 import com.example.petmeds.data.repo.CourseRepository
 import com.example.petmeds.data.repo.MedicationRepository
+import com.example.petmeds.data.repo.MedicineReferenceRepository
 import com.example.petmeds.data.repo.PetRepository
+import com.example.petmeds.domain.model.MedicineReference
 import com.example.petmeds.domain.model.Course
 import com.example.petmeds.domain.model.LifecycleStatus
 import com.example.petmeds.domain.model.LocalTimeStr
@@ -55,6 +57,9 @@ data class MedEditorUiState(
     val drafts: List<MedDraft> = listOf(MedDraft()),
     val saving: Boolean = false,
     val saved: Boolean = false,
+    val courseError: Boolean = false,
+    val medicineSuggestions: List<MedicineReference> = emptyList(),
+    val medicineInfoTarget: MedicineReference? = null,
 ) {
     val isEditMode: Boolean get() = editingId != null
 }
@@ -64,6 +69,7 @@ class MedEditorViewModel @Inject constructor(
     private val courseRepository: CourseRepository,
     private val medicationRepository: MedicationRepository,
     private val petRepository: PetRepository,
+    private val medicineReferenceRepository: MedicineReferenceRepository,
     private val alarmScheduler: DoseAlarmScheduler,
     private val clock: Clock,
 ) : ViewModel() {
@@ -144,6 +150,42 @@ class MedEditorViewModel @Inject constructor(
         }
     }
 
+    fun setInitialCourse(courseId: Long) {
+        if (courseId > 0L) update { it.copy(selectedCourseId = courseId, courseError = false) }
+    }
+
+    fun searchMedicines(query: String) {
+        if (query.isBlank()) {
+            update { it.copy(medicineSuggestions = emptyList()) }
+            return
+        }
+        viewModelScope.launch {
+            val results = medicineReferenceRepository.search(query)
+            update { it.copy(medicineSuggestions = results) }
+        }
+    }
+
+    fun clearSuggestions() {
+        update { it.copy(medicineSuggestions = emptyList()) }
+    }
+
+    fun showMedicineInfo(medicine: MedicineReference) {
+        update { it.copy(medicineInfoTarget = medicine) }
+    }
+
+    fun dismissMedicineInfo() {
+        update { it.copy(medicineInfoTarget = null) }
+    }
+
+    fun lookupMedicineInfo(name: String) {
+        viewModelScope.launch {
+            val med = medicineReferenceRepository.findByName(name)
+            if (med != null) {
+                update { it.copy(medicineInfoTarget = med) }
+            }
+        }
+    }
+
     fun loadFromOcrResults(results: List<OcrMedResult>) {
         if (results.isEmpty()) return
         val drafts = results.map { ocr -> ocr.toDraft() }
@@ -157,8 +199,9 @@ class MedEditorViewModel @Inject constructor(
             val dosageOk = draft.dosageAmount.toDoubleOrNull()?.let { it > 0.0 } == true
             draft.copy(nameError = !nameOk, dosageError = !dosageOk)
         }
-        if (validatedDrafts.any { it.nameError || it.dosageError }) {
-            update { it.copy(drafts = validatedDrafts) }
+        val courseOk = s.isEditMode || s.selectedCourseId != null
+        if (validatedDrafts.any { it.nameError || it.dosageError } || !courseOk) {
+            update { it.copy(drafts = validatedDrafts, courseError = !courseOk) }
             return
         }
         if (s.saving) return

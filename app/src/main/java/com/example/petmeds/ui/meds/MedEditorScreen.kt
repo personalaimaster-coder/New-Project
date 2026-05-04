@@ -71,6 +71,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.petmeds.R
 import com.example.petmeds.domain.model.LocalTimeStr
 import com.example.petmeds.domain.model.MedForm
+import com.example.petmeds.domain.model.MedicineReference
 import com.example.petmeds.ui.theme.Brand
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,12 +79,20 @@ import com.example.petmeds.ui.theme.Brand
 fun MedEditorScreen(
     medicationId: Long?,
     onClose: () -> Unit,
+    onCreateCourse: () -> Unit = {},
     viewModel: MedEditorViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(medicationId) { viewModel.load(medicationId) }
     LaunchedEffect(state.saved) { if (state.saved) onClose() }
+
+    state.medicineInfoTarget?.let { medicine ->
+        MedicineInfoDialog(
+            medicine = medicine,
+            onDismiss = viewModel::dismissMedicineInfo,
+        )
+    }
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
@@ -151,7 +160,10 @@ fun MedEditorScreen(
                 CoursePicker(
                     courses = state.courses,
                     selectedCourseId = state.selectedCourseId,
-                    onSelected = { id -> viewModel.update { it.copy(selectedCourseId = id) } },
+                    isEditMode = state.isEditMode,
+                    courseError = state.courseError,
+                    onSelected = { id -> viewModel.update { it.copy(selectedCourseId = id, courseError = false) } },
+                    onCreateCourse = onCreateCourse,
                 )
             }
 
@@ -163,6 +175,13 @@ fun MedEditorScreen(
                         canRemove = !state.isEditMode && state.drafts.size > 1,
                         canShareSchedule = !state.isEditMode && index > 0,
                         firstMedicationName = state.drafts.firstOrNull()?.name.orEmpty(),
+                        medicineSuggestions = state.medicineSuggestions,
+                        onSearchMedicine = viewModel::searchMedicines,
+                        onMedicineSelected = { med ->
+                            viewModel.updateDraft(index) { it.copy(name = med.brandName, nameError = false) }
+                            viewModel.clearSuggestions()
+                        },
+                        onMedicineInfoClick = viewModel::showMedicineInfo,
                         onUpdate = { transform -> viewModel.updateDraft(index, transform) },
                         onAddTime = { time -> viewModel.addDailyTime(index, time) },
                         onRemoveTime = { time -> viewModel.removeDailyTime(index, time) },
@@ -194,7 +213,10 @@ fun MedEditorScreen(
 private fun CoursePicker(
     courses: List<com.example.petmeds.domain.model.Course>,
     selectedCourseId: Long?,
+    isEditMode: Boolean,
+    courseError: Boolean,
     onSelected: (Long?) -> Unit,
+    onCreateCourse: () -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
     val selected = courses.firstOrNull { it.id == selectedCourseId }
@@ -203,11 +225,13 @@ private fun CoursePicker(
         onExpandedChange = { expanded = it },
     ) {
         OutlinedTextField(
-            value = selected?.name ?: "No course",
+            value = selected?.name ?: if (isEditMode) "No course" else "Select a course",
             onValueChange = {},
             readOnly = true,
-            label = { Text("Course") },
+            label = { Text("Course *") },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            isError = courseError,
+            supportingText = if (courseError) { { Text("Course is required") } } else null,
             shape = RoundedCornerShape(14.dp),
             modifier = Modifier
                 .menuAnchor()
@@ -217,14 +241,27 @@ private fun CoursePicker(
             expanded = expanded,
             onDismissRequest = { expanded = false },
         ) {
-            DropdownMenuItem(
-                text = { Text("No course") },
-                onClick = { onSelected(null); expanded = false },
-            )
+            if (isEditMode) {
+                DropdownMenuItem(
+                    text = { Text("No course") },
+                    onClick = { onSelected(null); expanded = false },
+                )
+            }
             courses.forEach { course ->
                 DropdownMenuItem(
                     text = { Text(course.name) },
                     onClick = { onSelected(course.id); expanded = false },
+                )
+            }
+            if (courses.isEmpty()) {
+                DropdownMenuItem(
+                    text = {
+                        Text(
+                            "+ Create new course",
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    },
+                    onClick = { expanded = false; onCreateCourse() },
                 )
             }
         }
@@ -238,6 +275,10 @@ private fun MedicationDraftEditor(
     canRemove: Boolean,
     canShareSchedule: Boolean,
     firstMedicationName: String,
+    medicineSuggestions: List<MedicineReference>,
+    onSearchMedicine: (String) -> Unit,
+    onMedicineSelected: (MedicineReference) -> Unit,
+    onMedicineInfoClick: (MedicineReference) -> Unit,
     onUpdate: ((MedDraft) -> MedDraft) -> Unit,
     onAddTime: (LocalTimeStr) -> Unit,
     onRemoveTime: (LocalTimeStr) -> Unit,
@@ -259,15 +300,14 @@ private fun MedicationDraftEditor(
         }
         EditorCard(title = "Essentials", icon = Icons.Filled.Tune) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                OutlinedTextField(
+                MedicineAutocompleteField(
                     value = draft.name,
                     onValueChange = { v -> onUpdate { it.copy(name = v, nameError = false) } },
-                    label = { Text("Medication name") },
-                    placeholder = { Text("e.g. Apoquel") },
+                    suggestions = medicineSuggestions,
+                    onSearch = onSearchMedicine,
+                    onSuggestionSelected = onMedicineSelected,
+                    onInfoClick = onMedicineInfoClick,
                     isError = draft.nameError,
-                    supportingText = if (draft.nameError) {{ Text("Required") }} else null,
-                    singleLine = true,
-                    shape = RoundedCornerShape(14.dp),
                     modifier = Modifier.fillMaxWidth(),
                 )
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {

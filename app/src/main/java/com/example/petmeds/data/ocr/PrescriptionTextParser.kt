@@ -1,6 +1,7 @@
 package com.example.petmeds.data.ocr
 
 import android.content.Context
+import com.example.petmeds.data.repo.MedicineReferenceRepository
 import com.google.mlkit.vision.text.Text
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -30,6 +31,7 @@ import javax.inject.Singleton
 @Singleton
 class PrescriptionTextParser @Inject constructor(
     @ApplicationContext private val context: Context,
+    private val medicineReferenceRepository: MedicineReferenceRepository,
 ) {
 
     /** Set of lowercase drug names loaded once from assets/drug_names.txt. */
@@ -72,14 +74,22 @@ class PrescriptionTextParser @Inject constructor(
             val form = inferForm(line + " " + afterDosage)
             val notes = extractNotes(context)
 
-            // ── Dictionary lookup ────────────────────────────────────────────
+            // ── Dictionary lookup (legacy flat file + structured database) ────
             val nameLower = cleanName.lowercase()
-            val confident = drugDictionary.any { entry ->
+            val legacyMatch = drugDictionary.any { entry ->
                 nameLower == entry || nameLower.startsWith(entry) || entry.startsWith(nameLower)
+            }
+            val structuredMatch = medicineReferenceRepository.fuzzyMatch(cleanName, threshold = 0.6)
+            val confident = legacyMatch || structuredMatch != null
+
+            val resolvedName = if (structuredMatch != null && structuredMatch.score >= 0.85) {
+                structuredMatch.medicine.brandName
+            } else {
+                cleanName
             }
 
             results += OcrMedResult(
-                name = cleanName,
+                name = resolvedName,
                 dosageAmount = amount,
                 dosageUnit = unit,
                 form = form,

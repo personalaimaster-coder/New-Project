@@ -81,7 +81,7 @@ private object Routes {
     const val TODAY           = "today"
     const val MEDS            = "meds"
     const val MED_ADD_CHOOSER = "med_add_chooser"
-    const val MED_NEW         = "med_new"
+    const val MED_NEW         = "med_new?courseId={courseId}"
     const val MED_EDIT        = "med_edit/{id}"
     const val MED_DETAIL      = "med_detail/{id}"
     const val OCR_REVIEW      = "ocr_review/{imageUri}"
@@ -93,6 +93,7 @@ private object Routes {
     const val PET_EDIT        = "pet_edit"
     const val SETTINGS        = "settings"
 
+    fun medNew(courseId: Long = -1L) = "med_new?courseId=$courseId"
     fun medEdit(id: Long) = "med_edit/$id"
     fun medDetail(id: Long) = "med_detail/$id"
     fun courseEdit(id: Long) = "course_edit/$id"
@@ -192,7 +193,13 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
 
             composable(Routes.MEDS) {
                 MedsListScreen(
-                    onAddMedication = { nav.navigate(Routes.MED_ADD_CHOOSER) },
+                    onAddMedication = { courseId ->
+                        if (courseId != null) {
+                            nav.navigate(Routes.medNew(courseId))
+                        } else {
+                            nav.navigate(Routes.MED_ADD_CHOOSER)
+                        }
+                    },
                     onAddCourse = { nav.navigate(Routes.COURSE_NEW) },
                     onOpenMedication = { id -> nav.navigate(Routes.medDetail(id)) },
                 )
@@ -208,7 +215,7 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
             composable(Routes.MED_ADD_CHOOSER) {
                 MedAddChooserScreen(
                     onManual = {
-                        nav.navigate(Routes.MED_NEW) {
+                        nav.navigate(Routes.medNew()) {
                             popUpTo(Routes.MED_ADD_CHOOSER) { inclusive = true }
                         }
                     },
@@ -226,14 +233,14 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                 OcrReviewScreen(
                     imageUri = imageUri,
                     onConfirm = { results ->
-                        nav.navigate(Routes.MED_NEW)
+                        nav.navigate(Routes.medNew())
                         nav.currentBackStackEntry
                             ?.savedStateHandle
                             ?.set("ocr_results", ArrayList(results))
                     },
                     onRetake = { nav.popBackStack(Routes.MED_ADD_CHOOSER, inclusive = false) },
                     onManual = {
-                        nav.navigate(Routes.MED_NEW) {
+                        nav.navigate(Routes.medNew()) {
                             popUpTo(Routes.MED_ADD_CHOOSER) { inclusive = true }
                         }
                     },
@@ -241,11 +248,16 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                 )
             }
 
-            composable(Routes.MED_NEW) { backStackEntry ->
+            composable(
+                route = Routes.MED_NEW,
+                arguments = listOf(navArgument("courseId") { type = NavType.LongType; defaultValue = -1L }),
+            ) { backStackEntry ->
                 val viewModel: com.example.petmeds.ui.meds.MedEditorViewModel = hiltViewModel(backStackEntry)
+                val courseId = backStackEntry.arguments?.getLong("courseId") ?: -1L
                 val ocrResults by backStackEntry.savedStateHandle
                     .getStateFlow<ArrayList<OcrMedResult>?>("ocr_results", null)
                     .collectAsState()
+                LaunchedEffect(courseId) { viewModel.setInitialCourse(courseId) }
                 LaunchedEffect(ocrResults) {
                     if (!ocrResults.isNullOrEmpty()) {
                         viewModel.loadFromOcrResults(ocrResults!!)
@@ -255,6 +267,7 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                 MedEditorScreen(
                     medicationId = null,
                     onClose = { nav.popBackStack() },
+                    onCreateCourse = { nav.navigate(Routes.COURSE_NEW) },
                     viewModel = viewModel,
                 )
             }
@@ -266,6 +279,7 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                 MedEditorScreen(
                     medicationId = entry.arguments?.getLong("id"),
                     onClose = { nav.popBackStack() },
+                    onCreateCourse = { nav.navigate(Routes.COURSE_NEW) },
                 )
             }
 
@@ -301,11 +315,13 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                 route = Routes.COURSE_DETAIL,
                 arguments = listOf(navArgument("id") { type = NavType.LongType }),
             ) { entry ->
+                val courseId = entry.arguments?.getLong("id") ?: -1L
                 CourseDetailScreen(
-                    courseId = entry.arguments?.getLong("id"),
+                    courseId = courseId,
                     onBack = { nav.popBackStack() },
                     onEdit = { id -> nav.navigate(Routes.courseEdit(id)) },
                     onOpenMedication = { id -> nav.navigate(Routes.medDetail(id)) },
+                    onAddMedication = { nav.navigate(Routes.medNew(courseId)) },
                 )
             }
 

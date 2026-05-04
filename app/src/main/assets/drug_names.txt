@@ -564,3 +564,136 @@ hexigel
 metronidazole gel
 clindamycin dental
 doxycycline dental
+
+# ── Indian Veterinary Brands (from structured database) ──────────────────────
+
+# Ectoparasiticides
+vi-fi forte
+vivaldis vi-fi forte
+nayflee
+nayflee plus
+bark out loud natural spot-on
+bark out loud flea tick spray
+tickfree
+tickfree spot-on
+soft & silky
+zerokeet
+frontband plus
+ectofree
+
+# Anthelmintics
+alfanil
+ipraz
+skyworm
+skyworm xl
+skyworm puppy dewormer
+endewor
+vivaldis endewor
+heartgard
+heartgard plus
+vibex plus
+
+# Vaccines
+raksharab
+starvac-r
+rabisin
+rabigen mono
+nobivac rabies
+megavac 7
+megavac 6
+megavac cc
+megavac-p
+nobivac dhppi
+nobivac l4
+nobivac puppy dp
+nobivac kc
+feligen
+nobivac tricat trio
+canigen dhppi/l
+
+# Antibiotics
+ataxin
+intamox-o
+intamox
+lixen
+cepstar
+cipmox cv
+marbomet
+mupicip
+novaclox-lb
+novaclox
+marbodac
+deep tbr
+
+# Antifungals
+subavet-it 50
+subavet
+viv keto spray
+viv silky foam
+strike-off shampoo
+frecia
+izopet
+
+# Cardiovascular / Renal
+aceptor
+rinonadyl
+pronefra
+utkid
+
+# Hepatic / GI
+livjivan
+liverolin
+entero secure
+gutwell
+heptol
+pancresolve
+diamel
+
+# Endocrine
+vet thyro
+cathyro
+
+# NSAIDs / Pain / Joint
+melonex
+carprovet
+karpofen
+condrovet force ha
+condrovet
+joint must
+vendisc
+bonilage
+
+# Dermatology / Immunomodulation
+atosporin
+prurigo spray
+prurigo
+atop 7
+cortavance
+aromacalm
+bark out loud allergy shampoo
+newcharm
+spectrazole
+loamglo
+
+# Herbal / Integrative
+advamun
+advaplat
+advaren
+bark out loud glow shine chewstix
+bark out loud paw butter
+
+# Supplements
+bark out loud sardine oil
+bark out loud multivitamins
+cat star
+star coat
+intacal pet max
+intacal
+minmate
+caldipet
+nutrical ca
+verol
+milk o pet
+pup start
+calowries
+venlyte

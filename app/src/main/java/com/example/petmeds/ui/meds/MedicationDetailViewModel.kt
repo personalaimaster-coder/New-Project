@@ -5,8 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.petmeds.data.repo.CourseRepository
 import com.example.petmeds.data.repo.DoseLogRepository
 import com.example.petmeds.data.repo.MedicationRepository
+import com.example.petmeds.data.repo.MedicineReferenceRepository
 import com.example.petmeds.domain.model.Course
 import com.example.petmeds.domain.model.DoseLog
+import com.example.petmeds.domain.model.MedicineReference
 import com.example.petmeds.domain.model.Medication
 import com.example.petmeds.notifications.DoseAlarmScheduler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,6 +25,8 @@ data class MedicationDetailUiState(
     val medication: Medication? = null,
     val course: Course? = null,
     val logs: List<DoseLog> = emptyList(),
+    val medicineInfo: MedicineReference? = null,
+    val medicineInfoLoaded: Boolean = false,
 )
 
 @HiltViewModel
@@ -30,6 +34,7 @@ class MedicationDetailViewModel @Inject constructor(
     private val medicationRepository: MedicationRepository,
     private val courseRepository: CourseRepository,
     private val doseLogRepository: DoseLogRepository,
+    private val medicineReferenceRepository: MedicineReferenceRepository,
     private val alarmScheduler: DoseAlarmScheduler,
     private val clock: Clock,
 ) : ViewModel() {
@@ -89,10 +94,16 @@ class MedicationDetailViewModel @Inject constructor(
     private suspend fun refreshMedication() {
         val med = medicationRepository.findById(medicationId)
         val course = med?.courseId?.let { courseRepository.findById(it) }
+        val medicineInfo = med?.let { resolveInfo(it.name) }
         _state.value = _state.value.copy(
             loading = false,
             medication = med,
             course = course,
+            medicineInfo = medicineInfo,
+            medicineInfoLoaded = med != null,
         )
     }
+
+    private fun resolveInfo(name: String): MedicineReference? =
+        medicineReferenceRepository.findByName(name)
 }

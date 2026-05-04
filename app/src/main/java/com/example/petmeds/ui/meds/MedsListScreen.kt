@@ -76,7 +76,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun MedsListScreen(
-    onAddMedication: () -> Unit,
+    onAddMedication: (courseId: Long?) -> Unit,
     onAddCourse: () -> Unit,
     onOpenMedication: (Long) -> Unit,
     viewModel: MedsListViewModel = hiltViewModel(),
@@ -102,7 +102,7 @@ fun MedsListScreen(
                         elevation = FloatingActionButtonDefaults.elevation(),
                     )
                     ExtendedFloatingActionButton(
-                        onClick = { fabExpanded = false; onAddMedication() },
+                        onClick = { fabExpanded = false; onAddMedication(null) },
                         icon = { Icon(Icons.Filled.Medication, contentDescription = null) },
                         text = { Text("Add medication") },
                         elevation = FloatingActionButtonDefaults.elevation(),
@@ -124,7 +124,7 @@ fun MedsListScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding),
-                onAdd = onAddMedication,
+                onAdd = { onAddMedication(null) },
             )
         } else {
             LazyColumn(
@@ -143,7 +143,7 @@ fun MedsListScreen(
                     }
                     if (section.medications.isEmpty()) {
                         item(key = "empty-course-${section.course?.id ?: 0L}") {
-                            EmptyCourseCard(onAdd = onAddMedication)
+                            EmptyCourseCard(onAdd = { onAddMedication(section.course?.id) })
                         }
                     }
                     itemsIndexed(section.medications, key = { _, m -> m.id }) { idx, med ->

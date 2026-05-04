@@ -59,6 +59,7 @@ import com.example.petmeds.domain.model.DoseStatus
 import com.example.petmeds.domain.model.LifecycleStatus
 import com.example.petmeds.domain.model.MedForm
 import com.example.petmeds.domain.model.Medication
+import com.example.petmeds.domain.model.MedicineReference
 import com.example.petmeds.domain.model.ScheduleConfig
 import com.example.petmeds.ui.common.formatDosage
 import com.example.petmeds.ui.common.formatTime
@@ -171,6 +172,8 @@ fun MedicationDetailScreen(
                 med = med,
                 courseName = state.course?.name,
                 logs = state.logs,
+                medicineInfo = state.medicineInfo,
+                medicineInfoLoaded = state.medicineInfoLoaded,
                 onTakenNow = viewModel::logTakenNow,
                 modifier = Modifier.padding(padding),
             )
@@ -202,6 +205,8 @@ private fun MedicationDetailContent(
     med: Medication,
     courseName: String?,
     logs: List<DoseLog>,
+    medicineInfo: MedicineReference?,
+    medicineInfoLoaded: Boolean,
     onTakenNow: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -261,6 +266,52 @@ private fun MedicationDetailContent(
                 DoseLogRow(log)
             }
         }
+        if (medicineInfoLoaded) {
+            item {
+                MedicineInfoSection(medicineInfo)
+            }
+        }
+    }
+}
+
+@Composable
+private fun MedicineInfoSection(info: MedicineReference?) {
+    if (info == null) {
+        Text(
+            "No medicine information available.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        return
+    }
+    DetailCard(title = "Medicine Information") {
+        MedicineInfoRow("Generic Name", info.genericName)
+        MedicineInfoRow("Composition", info.composition)
+        MedicineInfoRow("Manufacturer", info.manufacturer)
+        MedicineInfoRow("Dosage Form", info.dosageForm)
+        MedicineInfoRow("Category", info.category)
+        Spacer(Modifier.height(4.dp))
+        Text(
+            "Clinical Indication",
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Text(
+            info.indication,
+            style = MaterialTheme.typography.bodySmall,
+        )
+    }
+}
+
+@Composable
+private fun MedicineInfoRow(label: String, value: String) {
+    Column {
+        Text(
+            label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Text(value, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
     }
 }
 

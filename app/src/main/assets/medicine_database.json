@@ -1,0 +1,1092 @@
+[
+  {
+    "brandName": "Bravecto (Very Small Dogs)",
+    "genericName": "Fluralaner",
+    "composition": "Fluralaner (112.5 mg)",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Chewable Tablet",
+    "indication": "12-week systemic treatment for tick and flea infestations in dogs weighing 2 to 4.5 kg.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bravecto", "fluralaner", "bravecto very small"]
+  },
+  {
+    "brandName": "Bravecto (Small Dogs)",
+    "genericName": "Fluralaner",
+    "composition": "Fluralaner (250 mg)",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Chewable Tablet",
+    "indication": "12-week systemic treatment for dogs weighing >4.5 to 10 kg.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bravecto", "fluralaner", "bravecto small"]
+  },
+  {
+    "brandName": "Bravecto (Medium Dogs)",
+    "genericName": "Fluralaner",
+    "composition": "Fluralaner (500 mg)",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Chewable Tablet",
+    "indication": "12-week systemic treatment for dogs weighing >10 to 20 kg.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bravecto", "fluralaner", "bravecto medium"]
+  },
+  {
+    "brandName": "Bravecto (Large Dogs)",
+    "genericName": "Fluralaner",
+    "composition": "Fluralaner (1000 mg)",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Chewable Tablet",
+    "indication": "12-week systemic treatment for dogs weighing >20 to 40 kg.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bravecto", "fluralaner", "bravecto large"]
+  },
+  {
+    "brandName": "Bravecto (Very Large Dogs)",
+    "genericName": "Fluralaner",
+    "composition": "Fluralaner (1400 mg)",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Chewable Tablet",
+    "indication": "12-week systemic treatment for dogs weighing >40 to 56 kg.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bravecto", "fluralaner", "bravecto very large"]
+  },
+  {
+    "brandName": "Bravecto Plus Spot-On",
+    "genericName": "Fluralaner + Moxidectin",
+    "composition": "Fluralaner + Moxidectin",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Feline formulation for fast, long-lasting protection against fleas, ticks, and gastrointestinal worms.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bravecto plus", "fluralaner", "moxidectin", "bravecto spot-on"]
+  },
+  {
+    "brandName": "NexGard",
+    "genericName": "Afoxolaner",
+    "composition": "Afoxolaner (68 mg, 136 mg)",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Chewable Tablet",
+    "indication": "Monthly systemic control of fleas, ticks, and mites in dogs from eight weeks of age.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["nexgard", "afoxolaner"]
+  },
+  {
+    "brandName": "NexGard PLUS",
+    "genericName": "Afoxolaner + Moxidectin + Pyrantel",
+    "composition": "Afoxolaner + Moxidectin + Pyrantel",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Chewable Tablet",
+    "indication": "Broad-spectrum monthly control of ectoparasites, heartworm disease, hookworms, and roundworms.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["nexgard plus", "afoxolaner", "moxidectin", "pyrantel"]
+  },
+  {
+    "brandName": "NexGard COMBO",
+    "genericName": "Esafoxolaner + Eprinomectin + Praziquantel",
+    "composition": "Esafoxolaner + Eprinomectin + Praziquantel",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Topical Solution",
+    "indication": "First broad-spectrum feline parasiticide targeting tapeworms, fleas, ticks, heartworm, roundworms, and hookworms.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["nexgard combo", "esafoxolaner", "eprinomectin", "praziquantel"]
+  },
+  {
+    "brandName": "Frontline Plus",
+    "genericName": "Fipronil + (S)-Methoprene",
+    "composition": "Fipronil + (S)-Methoprene",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Monthly topical control of adult fleas, ticks, and profound inhibition of flea eggs and larvae.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["frontline plus", "fipronil", "methoprene", "frontline"]
+  },
+  {
+    "brandName": "Frontline Spray",
+    "genericName": "Fipronil",
+    "composition": "Fipronil (0.250g)",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Spray",
+    "indication": "Liquid topical spray for immediate external elimination of fleas and ticks.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["frontline spray", "fipronil"]
+  },
+  {
+    "brandName": "Vivaldis VI-FI Forte (Up to 10kg)",
+    "genericName": "Fipronil + S-Methoprene",
+    "composition": "Fipronil (9.8% w/v) + S-Methoprene (11.8% w/v)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Topical Spot-On (0.67 ml pipette)",
+    "indication": "Long-lasting prevention of flea and tick re-infestation in small dogs.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["vi-fi forte", "vivaldis", "fipronil", "methoprene"]
+  },
+  {
+    "brandName": "Vivaldis VI-FI Forte (10-20kg)",
+    "genericName": "Fipronil + S-Methoprene",
+    "composition": "Fipronil (9.8% w/v) + S-Methoprene (11.8% w/v)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Topical Spot-On (1.34 ml pipette)",
+    "indication": "One month of continuous protection for medium dogs.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["vi-fi forte", "vivaldis", "fipronil", "methoprene"]
+  },
+  {
+    "brandName": "Vivaldis VI-FI Forte (20-40kg)",
+    "genericName": "Fipronil + S-Methoprene",
+    "composition": "Fipronil (9.8% w/v) + S-Methoprene (11.8% w/v)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Topical Spot-On (2.68 ml pipette)",
+    "indication": "Effective parasite control in large breed dogs.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["vi-fi forte", "vivaldis", "fipronil", "methoprene"]
+  },
+  {
+    "brandName": "Vivaldis VI-FI Forte (Cats)",
+    "genericName": "Fipronil + S-Methoprene",
+    "composition": "Fipronil (9.8% w/v) + S-Methoprene (11.8% w/v)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Feline-specific dosage for kittens over 8 weeks to eradicate adult and immature parasites.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["vi-fi forte", "vivaldis", "fipronil", "methoprene", "cat"]
+  },
+  {
+    "brandName": "Broadline",
+    "genericName": "Eprinomectin + Praziquantel + Fipronil + S-Methoprene",
+    "composition": "Eprinomectin (0.4%) + Praziquantel (8.3%) + Fipronil + S-Methoprene",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Comprehensive feline endectocide targeting ticks, fleas, hookworms, and gastrointestinal tapeworms.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["broadline", "eprinomectin", "praziquantel", "fipronil"]
+  },
+  {
+    "brandName": "Nayflee Plus Spot-On",
+    "genericName": "Fipronil + S-Methoprene",
+    "composition": "Fipronil + S-Methoprene",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Advanced topical ectoparasiticide specifically formulated for feline application.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["nayflee", "nayflee plus", "fipronil", "methoprene", "intas"]
+  },
+  {
+    "brandName": "Bark Out Loud Natural Spot-On",
+    "genericName": "Clove oil + Cedarwood oil + Soybean oil",
+    "composition": "Clove oil, Cedarwood oil, Soybean oil",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Plant-based preventative formulation for natural tick and flea deterrence, highly gentle on sensitive skin.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bark out loud", "natural spot-on", "vivaldis"]
+  },
+  {
+    "brandName": "Bark Out Loud Flea & Tick Spray",
+    "genericName": "Sesame oil + Cedarwood oil + Rosemary oil",
+    "composition": "Sesame oil, Cedarwood oil, Rosemary oil",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Spray",
+    "indication": "100% natural spray to kill and repel fleas while enriching the skin and coat.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["bark out loud", "flea tick spray", "vivaldis"]
+  },
+  {
+    "brandName": "Tickfree Spot-On",
+    "genericName": "Anti-tick blend",
+    "composition": "Proprietary anti-tick blend",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Weight-calibrated topicals for targeted flea and tick eradication.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["tickfree", "skyec"]
+  },
+  {
+    "brandName": "Alfanil",
+    "genericName": "Oxantel + Pyrantel + Praziquantel",
+    "composition": "Oxantel Embonate (543mg), Pyrantel Embonate (143mg), Praziquantel (50mg)",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Triple-action therapy for the eradication of roundworms, hookworms, tapeworms, and whipworms in dogs. Dosed at 1 tablet per 10 kg body weight.",
+    "category": "Anthelmintic",
+    "searchTerms": ["alfanil", "oxantel", "pyrantel", "praziquantel", "zenex"]
+  },
+  {
+    "brandName": "Ipraz",
+    "genericName": "Ivermectin + Praziquantel",
+    "composition": "Ivermectin + Praziquantel",
+    "manufacturer": "Virbac",
+    "dosageForm": "Tablet",
+    "indication": "Dual-action formulation. Ivermectin paralyzes ectoparasites and nematodes, while Praziquantel disrupts tapeworm and liver fluke teguments.",
+    "category": "Anthelmintic",
+    "searchTerms": ["ipraz", "ivermectin", "praziquantel", "virbac"]
+  },
+  {
+    "brandName": "SkyWorm",
+    "genericName": "Praziquantel + Pyrantel Pamoate + Febantel",
+    "composition": "Praziquantel, Pyrantel Pamoate, Febantel",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Tablet",
+    "indication": "Broad-spectrum intestinal deworming tablets available in flavored variants for enhanced compliance in dogs and cats.",
+    "category": "Anthelmintic",
+    "searchTerms": ["skyworm", "praziquantel", "pyrantel", "febantel", "skyec"]
+  },
+  {
+    "brandName": "SkyWorm Puppy Dewormer",
+    "genericName": "Pyrantel Pamoate + Febantel",
+    "composition": "Pyrantel Pamoate, Febantel",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Oral Suspension",
+    "indication": "Oral suspension optimized for the delicate gastrointestinal tracts of weaning puppies.",
+    "category": "Anthelmintic",
+    "searchTerms": ["skyworm puppy", "pyrantel", "febantel", "skyec"]
+  },
+  {
+    "brandName": "Vivaldis Endewor",
+    "genericName": "Systemic Vegetative Enzymes + Probiotics",
+    "composition": "Systemic Vegetative Enzymes, Probiotics (Lactobacillus)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Novel non-chemical dewormer. Uses enzymes to disrupt parasite life cycles and probiotics to regulate gut pH.",
+    "category": "Anthelmintic",
+    "searchTerms": ["endewor", "vivaldis", "probiotic dewormer"]
+  },
+  {
+    "brandName": "HEARTGARD Plus",
+    "genericName": "Ivermectin + Pyrantel",
+    "composition": "Ivermectin + Pyrantel",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Chewable Tablet",
+    "indication": "Beef-flavored chew for the prevention of heartworm disease and the treatment of hookworms and roundworms.",
+    "category": "Anthelmintic",
+    "searchTerms": ["heartgard", "heartgard plus", "ivermectin", "pyrantel"]
+  },
+  {
+    "brandName": "Raksharab",
+    "genericName": "Inactivated Rabies Virus",
+    "composition": "Inactivated Rabies Virus (Cell Culture, >1.0 I.U./dose)",
+    "manufacturer": "Indian Immunologicals Ltd.",
+    "dosageForm": "Injectable (1 ml SC/IM)",
+    "indication": "Primary prophylaxis (at 3 months) and post-bite therapy (Days 0, 3, 7, 14, 28). Confers up to 36 months of immunity.",
+    "category": "Vaccine",
+    "searchTerms": ["raksharab", "rabies vaccine", "indian immunologicals"]
+  },
+  {
+    "brandName": "Rabisin",
+    "genericName": "Inactivated Rabies Virus (G52 strain)",
+    "composition": "Inactivated Rabies Virus (G52 strain)",
+    "manufacturer": "Boehringer Ingelheim",
+    "dosageForm": "Injectable (1 ml SC/IM)",
+    "indication": "Active immunization against rabies in dogs, cats, equines, and ferrets.",
+    "category": "Vaccine",
+    "searchTerms": ["rabisin", "rabies vaccine", "boehringer"]
+  },
+  {
+    "brandName": "Rabigen Mono",
+    "genericName": "Inactivated Rabies Virus",
+    "composition": "Inactivated Rabies Virus",
+    "manufacturer": "Virbac",
+    "dosageForm": "Injectable",
+    "indication": "High-potency immunization for domestic dogs and cats.",
+    "category": "Vaccine",
+    "searchTerms": ["rabigen", "rabies vaccine", "virbac"]
+  },
+  {
+    "brandName": "Nobivac Rabies",
+    "genericName": "Inactivated Rabies Virus",
+    "composition": "Inactivated Rabies Virus",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Injectable",
+    "indication": "Prophylactic and post-bite therapy across a wide spectrum of mammalian species.",
+    "category": "Vaccine",
+    "searchTerms": ["nobivac rabies", "rabies vaccine", "msd"]
+  },
+  {
+    "brandName": "Megavac 7",
+    "genericName": "CDV + CAV-2 + CPV + Parainfluenza + CAV-1 + Leptospirosis",
+    "composition": "Canine Distemper, CAV-2, Canine Parvovirus, Parainfluenza, CAV-1, Leptospirosis",
+    "manufacturer": "Indian Immunologicals Ltd.",
+    "dosageForm": "Injectable",
+    "indication": "Complex formulation containing live attenuated viral strains alongside inactivated bacterial (Leptospira) components.",
+    "category": "Vaccine",
+    "searchTerms": ["megavac 7", "megavac", "distemper", "parvovirus", "indian immunologicals"]
+  },
+  {
+    "brandName": "Megavac 6",
+    "genericName": "CDV + Hepatitis + Parvovirus + Leptospirosis",
+    "composition": "Canine Distemper, Hepatitis, Parvovirus, Leptospirosis",
+    "manufacturer": "Indian Immunologicals Ltd.",
+    "dosageForm": "Injectable",
+    "indication": "Hexavalent prophylactic vaccine for core canine protection.",
+    "category": "Vaccine",
+    "searchTerms": ["megavac 6", "megavac", "indian immunologicals"]
+  },
+  {
+    "brandName": "Megavac CC",
+    "genericName": "Canine Coronavirus",
+    "composition": "Canine Coronavirus",
+    "manufacturer": "Indian Immunologicals Ltd.",
+    "dosageForm": "Injectable",
+    "indication": "Monovalent prophylactic vaccine directed against canine enteric coronavirus.",
+    "category": "Vaccine",
+    "searchTerms": ["megavac cc", "coronavirus", "indian immunologicals"]
+  },
+  {
+    "brandName": "Megavac-P",
+    "genericName": "Canine Parvovirus",
+    "composition": "Canine Parvovirus",
+    "manufacturer": "Indian Immunologicals Ltd.",
+    "dosageForm": "Injectable",
+    "indication": "Monovalent prophylactic vaccine for targeted parvovirus protection.",
+    "category": "Vaccine",
+    "searchTerms": ["megavac-p", "parvovirus", "indian immunologicals"]
+  },
+  {
+    "brandName": "Nobivac DHPPi",
+    "genericName": "CDV + CAV-1 + CPV + Parainfluenza",
+    "composition": "Canine Distemper, CAV-1, Canine Parvovirus, Parainfluenza",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Injectable (Lyophilized)",
+    "indication": "Live attenuated lyophilized vaccine requiring reconstitution.",
+    "category": "Vaccine",
+    "searchTerms": ["nobivac dhppi", "nobivac", "distemper", "parvovirus", "msd"]
+  },
+  {
+    "brandName": "Nobivac L4",
+    "genericName": "Leptospira quadrivalent",
+    "composition": "Leptospira canicola, icterohaemorrhagiae, australis, grippotyphosa",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Injectable",
+    "indication": "Inactivated quadrivalent bacterial vaccine for comprehensive leptospirosis coverage.",
+    "category": "Vaccine",
+    "searchTerms": ["nobivac l4", "leptospirosis", "msd"]
+  },
+  {
+    "brandName": "Nobivac Puppy DP",
+    "genericName": "CDV + CPV",
+    "composition": "Canine Distemper, Canine Parvovirus",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Injectable (Lyophilized)",
+    "indication": "Live attenuated freeze-dried vaccine optimized for early immunization in very young puppies.",
+    "category": "Vaccine",
+    "searchTerms": ["nobivac puppy", "nobivac dp", "msd"]
+  },
+  {
+    "brandName": "Nobivac KC",
+    "genericName": "Bordetella + Parainfluenza",
+    "composition": "Bordetella bronchiseptica, Canine Parainfluenza virus",
+    "manufacturer": "MSD Animal Health",
+    "dosageForm": "Intranasal",
+    "indication": "Lyophilized live vaccine administered intranasally to prevent canine infectious tracheobronchitis (Kennel Cough).",
+    "category": "Vaccine",
+    "searchTerms": ["nobivac kc", "kennel cough", "bordetella", "msd"]
+  },
+  {
+    "brandName": "Feligen / Nobivac Tricat Trio",
+    "genericName": "FPV + FHV + FCV",
+    "composition": "Feline Panleukopenia, Feline Herpesvirus, Feline Calicivirus",
+    "manufacturer": "Virbac / MSD Animal Health",
+    "dosageForm": "Injectable",
+    "indication": "Trivalent core vaccine offering essential feline viral protection.",
+    "category": "Vaccine",
+    "searchTerms": ["feligen", "nobivac tricat", "feline vaccine", "panleukopenia"]
+  },
+  {
+    "brandName": "Canigen DHPPI/L",
+    "genericName": "CDV + CAV-1 + CAV-2 + CPV + Parainfluenza + Leptospirosis",
+    "composition": "CDV, CAV-1, CAV-2, CPV, Parainfluenza, Leptospirosis",
+    "manufacturer": "Virbac",
+    "dosageForm": "Injectable",
+    "indication": "Multivalent core vaccine for comprehensive canine immunization.",
+    "category": "Vaccine",
+    "searchTerms": ["canigen", "dhppi", "virbac"]
+  },
+  {
+    "brandName": "Ataxin",
+    "genericName": "Enrofloxacin",
+    "composition": "Enrofloxacin (50mg, 150mg)",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Tablet",
+    "indication": "Broad-spectrum fluoroquinolone. Highly indicated for deep pyodermas, recurrent urogenital tract infections, and lower respiratory infections.",
+    "category": "Antibiotic",
+    "searchTerms": ["ataxin", "enrofloxacin", "sava vet", "savavet"]
+  },
+  {
+    "brandName": "Intamox-O",
+    "genericName": "Amoxicillin",
+    "composition": "Amoxicillin BP (1.5g)",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "First-line beta-lactam antibiotic for treating susceptible systemic bacterial infections in large and small animals.",
+    "category": "Antibiotic",
+    "searchTerms": ["intamox", "amoxicillin", "intas"]
+  },
+  {
+    "brandName": "Lixen",
+    "genericName": "Cephalexin",
+    "composition": "Cephalexin (300mg, 600mg)",
+    "manufacturer": "Virbac",
+    "dosageForm": "Tablet",
+    "indication": "First-generation cephalosporin highly effective for soft tissue and persistent dermatological infections.",
+    "category": "Antibiotic",
+    "searchTerms": ["lixen", "cephalexin", "virbac"]
+  },
+  {
+    "brandName": "Cepstar",
+    "genericName": "Cephalexin",
+    "composition": "Cephalexin (300mg, 600mg)",
+    "manufacturer": "Cipla Vet",
+    "dosageForm": "Tablet",
+    "indication": "Oral cephalosporin utilized widely in veterinary dermatological practice.",
+    "category": "Antibiotic",
+    "searchTerms": ["cepstar", "cephalexin", "cipla"]
+  },
+  {
+    "brandName": "Cipmox CV",
+    "genericName": "Amoxicillin + Clavulanate",
+    "composition": "Amoxicillin Trihydrate + Potassium Clavulanate",
+    "manufacturer": "Cipla Vet",
+    "dosageForm": "Tablet / Dry Syrup",
+    "indication": "Beta-lactamase resistant combination required for stubborn, resistant bacterial infections.",
+    "category": "Antibiotic",
+    "searchTerms": ["cipmox", "amoxicillin", "clavulanate", "cipla"]
+  },
+  {
+    "brandName": "Marbomet",
+    "genericName": "Marbofloxacin",
+    "composition": "Marbofloxacin (150mg)",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Advanced fluoroquinolone designed for severe, refractory skin, soft tissue, and urinary tract infections.",
+    "category": "Antibiotic",
+    "searchTerms": ["marbomet", "marbofloxacin", "intas"]
+  },
+  {
+    "brandName": "Mupicip",
+    "genericName": "Mupirocin",
+    "composition": "Mupirocin (2.0% w/w)",
+    "manufacturer": "Cipla Vet",
+    "dosageForm": "Topical Ointment",
+    "indication": "Highly effective topical antibacterial ointment for treating superficial skin infections and wounds.",
+    "category": "Antibiotic",
+    "searchTerms": ["mupicip", "mupirocin", "cipla"]
+  },
+  {
+    "brandName": "Novaclox-LB",
+    "genericName": "Amoxicillin + Dicloxacillin + Lactic Acid Bacillus",
+    "composition": "Amoxicillin (250mg) + Dicloxacillin (250mg) + Lactic Acid Bacillus",
+    "manufacturer": "Cipla Vet",
+    "dosageForm": "Tablet",
+    "indication": "Dual-action beta-lactam formulation supplemented with a probiotic to prevent antibiotic-induced gastrointestinal dysbiosis.",
+    "category": "Antibiotic",
+    "searchTerms": ["novaclox", "amoxicillin", "dicloxacillin", "cipla"]
+  },
+  {
+    "brandName": "Deep TBR",
+    "genericName": "Antibiotic",
+    "composition": "Antibiotic / Healing Agent",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Tablet",
+    "indication": "Tablet formulation designed to support deep tissue healing and combat systemic infections.",
+    "category": "Antibiotic",
+    "searchTerms": ["deep tbr", "skyec"]
+  },
+  {
+    "brandName": "Subavet-IT 50",
+    "genericName": "Itraconazole",
+    "composition": "Itraconazole (50mg)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Capsule",
+    "indication": "Potent antifungal. Inhibits fungal ergosterol synthesis. Systemic treatment for severe dermatophytosis in cats and dogs. Contraindicated in hepatic impairment.",
+    "category": "Antifungal",
+    "searchTerms": ["subavet", "itraconazole", "vivaldis"]
+  },
+  {
+    "brandName": "Vivaldis Viv Keto Spray",
+    "genericName": "Ketoconazole + Chlorhexidine",
+    "composition": "Ketoconazole (2%) + Chlorhexidine (2%)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Spray",
+    "indication": "Synergistic topical formulation to treat mixed bacterial-fungal skin infections, yeast overgrowth, and hot spots.",
+    "category": "Antifungal",
+    "searchTerms": ["viv keto", "ketoconazole", "chlorhexidine", "vivaldis"]
+  },
+  {
+    "brandName": "Vivaldis Viv Silky Foam",
+    "genericName": "Miconazole + Chlorhexidine",
+    "composition": "Miconazole (2%) + Chlorhexidine (2%)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Foam",
+    "indication": "Leave-on foam specifically indicated for severe seborrhoeic dermatitis and Malassezia overgrowth.",
+    "category": "Antifungal",
+    "searchTerms": ["viv silky foam", "miconazole", "chlorhexidine", "vivaldis"]
+  },
+  {
+    "brandName": "Strike-Off Shampoo",
+    "genericName": "Ketoconazole + Chlorhexidine + Cetrimide",
+    "composition": "Ketoconazole (2%) + Chlorhexidine (2%) + Cetrimide (0.1%)",
+    "manufacturer": "Veko Care / Cipla Vet",
+    "dosageForm": "Shampoo",
+    "indication": "Heavy-duty antifungal and antiseptic wash for severe, generalized dermatological conditions.",
+    "category": "Antifungal",
+    "searchTerms": ["strike-off", "ketoconazole", "chlorhexidine", "shampoo"]
+  },
+  {
+    "brandName": "Aceptor",
+    "genericName": "Benazepril",
+    "composition": "Benazepril Hydrochloride (2.5mg, 5mg, 10mg)",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Tablet",
+    "indication": "ACE inhibitor. Causes vasodilation and reduces blood pressure. Increases survival in DCM and MMVD. Reduces glomerular hypertension and proteinuria in CKD.",
+    "category": "Cardiovascular",
+    "searchTerms": ["aceptor", "benazepril", "sava vet", "ace inhibitor"]
+  },
+  {
+    "brandName": "Rinonadyl",
+    "genericName": "Specialized Probiotic Strains",
+    "composition": "Specialized Probiotic Strains",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Advanced enteric dialysis supplement. Utilizes specific bacterial strains to catabolize uremic toxins in the gut, reducing renal excretory burden in advanced CKD.",
+    "category": "Cardiovascular",
+    "searchTerms": ["rinonadyl", "vivaldis", "renal support", "ckd"]
+  },
+  {
+    "brandName": "Pronefra",
+    "genericName": "Intestinal Phosphate Binders",
+    "composition": "Intestinal Phosphate Binders",
+    "manufacturer": "Virbac",
+    "dosageForm": "Oral Suspension",
+    "indication": "Palatable oral suspension for the management of hyperphosphatemia associated with chronic renal failure.",
+    "category": "Cardiovascular",
+    "searchTerms": ["pronefra", "phosphate binder", "virbac", "renal"]
+  },
+  {
+    "brandName": "Utkid",
+    "genericName": "Tribulus terrestris + EPA + DHA + Vitamins",
+    "composition": "Tribulus terrestris, Piper nigrum, EPA, DHA, Vitamins",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Oral",
+    "indication": "Multi-action botanical and nutritional formula to support kidney function and urinary tract health.",
+    "category": "Cardiovascular",
+    "searchTerms": ["utkid", "kidney support", "skyec"]
+  },
+  {
+    "brandName": "Livjivan",
+    "genericName": "Herbal hepatoprotective",
+    "composition": "Herbal / Phytochemical blend",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Potent hepatoprotective agent designed to support liver regeneration and systemic detoxification.",
+    "category": "Hepatic Support",
+    "searchTerms": ["livjivan", "liver support", "zenex"]
+  },
+  {
+    "brandName": "Entero Secure",
+    "genericName": "Probiotics + Neem + Papain",
+    "composition": "Probiotics, Neem extract, Papain",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Modulates intestinal microflora, enhances protein digestion via Papain, and provides immune support.",
+    "category": "Gastrointestinal",
+    "searchTerms": ["entero secure", "probiotic", "neem", "papain", "vivaldis"]
+  },
+  {
+    "brandName": "Gutwell",
+    "genericName": "Prebiotics + Probiotics",
+    "composition": "Prebiotics and Probiotics",
+    "manufacturer": "Venky's Pet",
+    "dosageForm": "Powder",
+    "indication": "Supplement designed to restore normal gastrointestinal function and maximize nutrient absorption.",
+    "category": "Gastrointestinal",
+    "searchTerms": ["gutwell", "probiotic", "prebiotic", "venkys"]
+  },
+  {
+    "brandName": "Heptol",
+    "genericName": "Liver Tonic",
+    "composition": "Specialized Liver Tonic",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Liquid",
+    "indication": "Liquid supportive therapy for recovery from acute and chronic hepatic impairment.",
+    "category": "Hepatic Support",
+    "searchTerms": ["heptol", "liver tonic", "skyec"]
+  },
+  {
+    "brandName": "Pancresolve",
+    "genericName": "Pancreatic enzymes",
+    "composition": "Pancreatic enzymes / Digestive support",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "For pets suffering from exocrine pancreatic insufficiency or severe digestive malabsorption.",
+    "category": "Gastrointestinal",
+    "searchTerms": ["pancresolve", "pancreatic enzymes", "vivaldis"]
+  },
+  {
+    "brandName": "Diamel",
+    "genericName": "Antioxidant metabolic support",
+    "composition": "Antioxidant and metabolic support solution",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Oral Solution",
+    "indication": "Oral solution to support metabolic health and regulate glucose metabolism in pets.",
+    "category": "Endocrine",
+    "searchTerms": ["diamel", "metabolic support", "vivaldis", "glucose"]
+  },
+  {
+    "brandName": "Vet Thyro",
+    "genericName": "Levothyroxine",
+    "composition": "Levothyroxine (0.2mg, 0.6mg)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Synthetic thyroid hormone replacement. Restores metabolic rate in hypothyroidism. Requires lifelong daily administration and regular T4/TSH monitoring.",
+    "category": "Endocrine",
+    "searchTerms": ["vet thyro", "levothyroxine", "thyroid", "vivaldis"]
+  },
+  {
+    "brandName": "Cathyro",
+    "genericName": "Methimazole",
+    "composition": "Methimazole (2.5mg, 5mg, 10mg)",
+    "manufacturer": "Veko Care",
+    "dosageForm": "Tablet",
+    "indication": "Potent antithyroid agent for the medical management of feline hyperthyroidism, blocking synthesis of excessive thyroid hormones.",
+    "category": "Endocrine",
+    "searchTerms": ["cathyro", "methimazole", "hyperthyroidism", "veko"]
+  },
+  {
+    "brandName": "Melonex",
+    "genericName": "Meloxicam",
+    "composition": "Meloxicam (2.5mg Chewable)",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Chewable Tablet",
+    "indication": "Preferential COX-2 inhibitor. Rapid alleviation of inflammation and pain in acute trauma and chronic musculoskeletal disorders.",
+    "category": "NSAID / Pain Management",
+    "searchTerms": ["melonex", "meloxicam", "intas", "nsaid"]
+  },
+  {
+    "brandName": "Carprovet",
+    "genericName": "Carprofen",
+    "composition": "Carprofen (75mg, 100mg)",
+    "manufacturer": "Dechra / Cipla Vet",
+    "dosageForm": "Tablet",
+    "indication": "Widely utilized NSAID for long-term management of osteoarthritis and immediate post-operative analgesia in dogs.",
+    "category": "NSAID / Pain Management",
+    "searchTerms": ["carprovet", "carprofen", "nsaid", "osteoarthritis"]
+  },
+  {
+    "brandName": "Condrovet Force HA",
+    "genericName": "Chondroitin + Glucosamine + Hyaluronic Acid",
+    "composition": "Chondroitin Sulfate, Glucosamine, Hyaluronic Acid",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Premium chondroprotective nutraceutical for deep joint matrix regeneration and enhancement of synovial fluid viscosity.",
+    "category": "Joint Support",
+    "searchTerms": ["condrovet", "chondroitin", "glucosamine", "hyaluronic acid", "vivaldis"]
+  },
+  {
+    "brandName": "Joint Must",
+    "genericName": "Glucosamine + Chondroitin + MSM",
+    "composition": "Glucosamine HCL, Chondroitin Sulfate, MSM, Vitamin C",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Tablet",
+    "indication": "Promotes joint flexibility and structural integrity of articular cartilage in aging pets.",
+    "category": "Joint Support",
+    "searchTerms": ["joint must", "glucosamine", "chondroitin", "msm", "skyec"]
+  },
+  {
+    "brandName": "Venky's Vendisc",
+    "genericName": "Bovine Tracheal Cartilage + Vitamin C + Taurine",
+    "composition": "Bovine Tracheal Cartilage (200mg), Vitamin C, Taurine",
+    "manufacturer": "Venky's Pet",
+    "dosageForm": "Tablet",
+    "indication": "Spine support formula for intensive management of IVDD and rheumatoid arthritis.",
+    "category": "Joint Support",
+    "searchTerms": ["vendisc", "venkys", "ivdd", "spine support"]
+  },
+  {
+    "brandName": "Atosporin",
+    "genericName": "Ciclosporin",
+    "composition": "Ciclosporin (50mg Capsule, 100mg/ml Solution)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Capsule / Oral Solution",
+    "indication": "Calcineurin inhibitor. Suppresses T-lymphocyte activation. Indicated for severe atopic dermatitis and perianal fistulas. Safer long-term alternative to systemic corticosteroids.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["atosporin", "ciclosporin", "cyclosporine", "vivaldis", "atopic"]
+  },
+  {
+    "brandName": "Prurigo Spray",
+    "genericName": "Hydrocortisone Aceponate",
+    "composition": "Hydrocortisone Aceponate (0.5% w/v)",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Spray",
+    "indication": "High-potency topical corticosteroid. Rapid, localized suppression of allergic skin inflammation and pruritus with minimal systemic absorption.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["prurigo", "hydrocortisone", "vivaldis", "corticosteroid spray"]
+  },
+  {
+    "brandName": "Atop 7 Mousse / Cream",
+    "genericName": "Omega 3 & 6 + Essential Oils + PCA + Plant Ceramides",
+    "composition": "Omega 3 & 6, Essential Oils, PCA, Plant Ceramides",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Mousse / Cream",
+    "indication": "Advanced dermocosmetic. Reinforces epidermal barrier, provides deep cellular hydration, and soothes allergy-prone skin without steroids.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["atop 7", "dermocosmetic", "ceramides", "sava vet"]
+  },
+  {
+    "brandName": "Bark Out Loud Allergy & Itch Relief Shampoo",
+    "genericName": "Plant Extracts + Moisturizers",
+    "composition": "Plant Extracts, Gentle Moisturizers",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Shampoo",
+    "indication": "Cleanses the coat and rapidly soothes hot spots and allergic pruritus, retaining the skin's natural microbial defense barrier.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["bark out loud", "allergy shampoo", "itch relief", "vivaldis"]
+  },
+  {
+    "brandName": "Aromacalm Collar",
+    "genericName": "Lavandin + White Wormwood Essential Oils",
+    "composition": "Lavandin and White Wormwood Essential Oils",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Collar",
+    "indication": "Transdermal delivery system releasing calming essential oils continuously for a month to manage stress-induced psychogenic dermatoses and anxiety.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["aromacalm", "calming collar", "sava vet", "anxiety"]
+  },
+  {
+    "brandName": "Cortavance",
+    "genericName": "Hydrocortisone Aceponate",
+    "composition": "Hydrocortisone Aceponate",
+    "manufacturer": "Virbac",
+    "dosageForm": "Spray",
+    "indication": "Potent topical corticosteroid spray for targeted relief of inflammatory skin conditions.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["cortavance", "hydrocortisone", "virbac"]
+  },
+  {
+    "brandName": "Advamun",
+    "genericName": "Guduchi + Aloe vera + Tulsi + Turmeric",
+    "composition": "Guduchi (Giloy), Aloe vera, Tulsi, Haridra (Turmeric)",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Oral",
+    "indication": "Natural immunomodulator. Enhances macrophage activity and boosts systemic resistance to viral and bacterial infections.",
+    "category": "Herbal / Integrative",
+    "searchTerms": ["advamun", "giloy", "tulsi", "turmeric", "sava vet", "immunomodulator"]
+  },
+  {
+    "brandName": "Advaplat",
+    "genericName": "Carica papaya + Andrographis + Tinospora",
+    "composition": "Carica papaya (300mg), Andrographis paniculata (100mg), Tinospora cordifolia (100mg)",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Tablet",
+    "indication": "Platelet enhancer. Carica papaya stimulates thrombopoiesis, critical in managing tick-borne diseases causing thrombocytopenia.",
+    "category": "Herbal / Integrative",
+    "searchTerms": ["advaplat", "papaya", "platelet", "sava vet", "ehrlichiosis"]
+  },
+  {
+    "brandName": "Advaren",
+    "genericName": "Phyllanthus niruri + Tribulus + Grape seed",
+    "composition": "Phyllanthus niruri, Tribulus terrestris, Grape seed extract",
+    "manufacturer": "Sava Vet",
+    "dosageForm": "Tablet",
+    "indication": "Nephroprotective and lithotriptic. Acts as a strong diuretic to facilitate expulsion of uroliths and prevents crystal aggregation.",
+    "category": "Herbal / Integrative",
+    "searchTerms": ["advaren", "nephroprotective", "uroliths", "sava vet"]
+  },
+  {
+    "brandName": "Bark Out Loud Glow & Shine Chewstix",
+    "genericName": "Curcumin + Quercetin + Bromelain",
+    "composition": "Turmeric (Bioactive Curcumin), Quercetin, Bromelain",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Chewable Treat",
+    "indication": "Curcumin mitigates free radical damage; Quercetin acts as a natural antihistamine to soothe allergic dermatitis.",
+    "category": "Herbal / Integrative",
+    "searchTerms": ["bark out loud", "glow shine", "curcumin", "quercetin", "vivaldis"]
+  },
+  {
+    "brandName": "Bark Out Loud Natural Beeswax Paw Butter",
+    "genericName": "Beeswax + Turmeric oil + Almond oil + Neem oil",
+    "composition": "Beeswax, Turmeric oil, Almond oil, Neem oil, Coconut oil",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Topical Balm",
+    "indication": "Emollient protective barrier. Heals cracks, moisturizes dry pads, protects paws from thermal damage.",
+    "category": "Herbal / Integrative",
+    "searchTerms": ["bark out loud", "paw butter", "beeswax", "vivaldis"]
+  },
+  {
+    "brandName": "Bark Out Loud Sardine Oil",
+    "genericName": "Omega 3 & 6 + CoQ10 + Biotin",
+    "composition": "Omega 3 & 6 fatty acids, CoQ10, Biotin",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Oil",
+    "indication": "Modulates inflammatory cascades, reduces shedding, promotes hair regrowth, and supports cardiac muscle function via CoQ10.",
+    "category": "Supplement",
+    "searchTerms": ["bark out loud", "sardine oil", "omega", "coq10", "vivaldis"]
+  },
+  {
+    "brandName": "Bark Out Loud Multivitamins Immunity Chewstix",
+    "genericName": "Vitamin B complex + Omega + Minerals",
+    "composition": "Vitamin B complex, Omega fatty acids, essential minerals",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Chewable Treat",
+    "indication": "Comprehensive daily nutritional support to boost vitality, detoxify the liver, and maintain immune health.",
+    "category": "Supplement",
+    "searchTerms": ["bark out loud", "multivitamin", "immunity", "vivaldis"]
+  },
+  {
+    "brandName": "Cat Star",
+    "genericName": "Multivitamins + Omega Fatty Acids",
+    "composition": "Dense Multivitamins, Omega Fatty Acids",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Liquid / Tablet",
+    "indication": "Specialized feline coat tonic to restore depleted epidermal lipid layers.",
+    "category": "Supplement",
+    "searchTerms": ["cat star", "multivitamin", "omega", "skyec", "coat tonic"]
+  },
+  {
+    "brandName": "Star Coat",
+    "genericName": "Multivitamins + Omega Fatty Acids",
+    "composition": "Dense Multivitamins, Omega Fatty Acids",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Liquid / Tablet",
+    "indication": "Canine coat tonic to restore depleted epidermal lipid layers and promote a healthy, glossy coat.",
+    "category": "Supplement",
+    "searchTerms": ["star coat", "multivitamin", "omega", "skyec", "coat tonic"]
+  },
+  {
+    "brandName": "Intacal Pet MAX",
+    "genericName": "Calcium + Phosphorus + Vitamin D3",
+    "composition": "Calcium, Phosphorus, Vitamin D3",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Promotes rapid osteogenesis in growing puppies and prevents eclampsia in lactating bitches.",
+    "category": "Supplement",
+    "searchTerms": ["intacal", "calcium", "vitamin d3", "intas"]
+  },
+  {
+    "brandName": "Minmate",
+    "genericName": "Essential Minerals + Amino Acids",
+    "composition": "Essential Minerals and Amino Acids",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Tablet / Powder",
+    "indication": "Provides comprehensive systemic metabolic support.",
+    "category": "Supplement",
+    "searchTerms": ["minmate", "minerals", "amino acids", "intas"]
+  },
+  {
+    "brandName": "Caldipet",
+    "genericName": "Calcium",
+    "composition": "Calcium solutions",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Syrup / Tablet",
+    "indication": "Readily bioavailable calcium therapies to ensure optimal skeletal density in cats and dogs.",
+    "category": "Supplement",
+    "searchTerms": ["caldipet", "calcium", "zenex"]
+  },
+  {
+    "brandName": "Verol",
+    "genericName": "Multivitamin blend",
+    "composition": "Multivitamin blend",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Broad-spectrum multivitamin therapy for overall vitality maintenance.",
+    "category": "Supplement",
+    "searchTerms": ["verol", "multivitamin", "zenex"]
+  },
+  {
+    "brandName": "Milk O Pet",
+    "genericName": "Weaning Feed Formula",
+    "composition": "Nutritionally dense transition feed",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Powder",
+    "indication": "Nutritionally dense transition feed for the fragile digestive systems of weaning puppies and kittens.",
+    "category": "Supplement",
+    "searchTerms": ["milk o pet", "weaning", "zenex"]
+  },
+  {
+    "brandName": "Pup Start",
+    "genericName": "Weaning Feed Formula",
+    "composition": "Nutritionally dense puppy feed",
+    "manufacturer": "SkyEc Drugs",
+    "dosageForm": "Powder",
+    "indication": "Nutritionally dense transition feed specifically formulated for weaning puppies.",
+    "category": "Supplement",
+    "searchTerms": ["pup start", "weaning", "skyec", "puppy"]
+  },
+  {
+    "brandName": "Calowries",
+    "genericName": "Garcinia Cambogia + Lipase",
+    "composition": "Garcinia Cambogia, Lipase",
+    "manufacturer": "Vivaldis Animal Health",
+    "dosageForm": "Paste",
+    "indication": "Formulation for metabolic weight management and obesity control in pets.",
+    "category": "Supplement",
+    "searchTerms": ["calowries", "garcinia", "weight management", "vivaldis"]
+  },
+  {
+    "brandName": "Venlyte",
+    "genericName": "Concentrated Electrolytes",
+    "composition": "Concentrated Electrolytes",
+    "manufacturer": "Venky's Pet",
+    "dosageForm": "Powder / Liquid",
+    "indication": "Rapid hydration formula to prevent severe dehydration following acute gastrointestinal distress or extreme exertion.",
+    "category": "Supplement",
+    "searchTerms": ["venlyte", "electrolytes", "venkys", "hydration"]
+  },
+  {
+    "brandName": "Starvac-R",
+    "genericName": "Inactivated Rabies Virus",
+    "composition": "Inactivated Rabies Virus",
+    "manufacturer": "Indian Immunologicals Ltd.",
+    "dosageForm": "Injectable",
+    "indication": "Routine prophylactic immunization against rabies in dogs and domestic animals.",
+    "category": "Vaccine",
+    "searchTerms": ["starvac", "rabies vaccine", "indian immunologicals"]
+  },
+  {
+    "brandName": "Vibex Plus",
+    "genericName": "Endectocidal agents",
+    "composition": "Endectocidal agents",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Comprehensive endoparasiticidal and ectoparasiticidal therapy for cats and dogs.",
+    "category": "Anthelmintic",
+    "searchTerms": ["vibex plus", "endectocide", "zenex"]
+  },
+  {
+    "brandName": "Marbodac",
+    "genericName": "Antibiotic",
+    "composition": "Antibiotic",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Systemic antibiotic therapy specifically formulated for cats and dogs.",
+    "category": "Antibiotic",
+    "searchTerms": ["marbodac", "antibiotic", "zenex"]
+  },
+  {
+    "brandName": "Frecia",
+    "genericName": "Antifungal",
+    "composition": "Antifungal",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Specialized antifungal therapy formulated for cats and dogs.",
+    "category": "Antifungal",
+    "searchTerms": ["frecia", "antifungal", "zenex"]
+  },
+  {
+    "brandName": "Izopet",
+    "genericName": "Oral Antifungal",
+    "composition": "Oral Antifungals",
+    "manufacturer": "Intas Animal Health",
+    "dosageForm": "Tablet / Capsule",
+    "indication": "Systemic oral antifungal therapy for companion animals.",
+    "category": "Antifungal",
+    "searchTerms": ["izopet", "antifungal", "intas"]
+  },
+  {
+    "brandName": "Liverolin",
+    "genericName": "Hepatic support compounds",
+    "composition": "Hepatic support compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Targeted therapy for complex liver disorders in cats and dogs.",
+    "category": "Hepatic Support",
+    "searchTerms": ["liverolin", "liver support", "zenex"]
+  },
+  {
+    "brandName": "Karpofen",
+    "genericName": "Carprofen",
+    "composition": "Carprofen",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Tablet",
+    "indication": "Specialized pain management formulation intended strictly for dogs.",
+    "category": "NSAID / Pain Management",
+    "searchTerms": ["karpofen", "carprofen", "zenex", "nsaid"]
+  },
+  {
+    "brandName": "Bonilage",
+    "genericName": "Joint lubrication compounds",
+    "composition": "Joint lubrication compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Oral",
+    "indication": "Therapy focused on improving joint lubrication and mobility in cats and dogs.",
+    "category": "Joint Support",
+    "searchTerms": ["bonilage", "joint", "zenex"]
+  },
+  {
+    "brandName": "Soft & Silky",
+    "genericName": "Anti-parasitic compounds",
+    "composition": "Anti-parasitic compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Topical",
+    "indication": "Ectoparasitic therapy tailored specifically for canine dermatology.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["soft silky", "ectoparasite", "zenex"]
+  },
+  {
+    "brandName": "Zerokeet",
+    "genericName": "Anti-parasitic compounds",
+    "composition": "Anti-parasitic compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Topical",
+    "indication": "Formulation for managing heavy external parasite loads in cats and dogs.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["zerokeet", "ectoparasite", "zenex"]
+  },
+  {
+    "brandName": "Frontband Plus Spot On",
+    "genericName": "Anti-parasitic compounds",
+    "composition": "Anti-parasitic compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Topical Spot-On",
+    "indication": "Systemic ectoparasite prevention specifically formulated for dogs.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["frontband", "ectoparasite", "zenex", "spot-on"]
+  },
+  {
+    "brandName": "Ectofree",
+    "genericName": "Anti-parasitic compounds",
+    "composition": "Anti-parasitic compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Topical",
+    "indication": "Therapy for the mitigation of ectoparasites in dogs.",
+    "category": "Ectoparasiticide",
+    "searchTerms": ["ectofree", "ectoparasite", "zenex"]
+  },
+  {
+    "brandName": "Newcharm",
+    "genericName": "Dermatological compounds",
+    "composition": "Dermatological compounds",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Topical",
+    "indication": "Targeted therapy for various superficial and deep dermatological issues.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["newcharm", "dermatology", "zenex"]
+  },
+  {
+    "brandName": "Spectrazole",
+    "genericName": "Dermatitis treatment",
+    "composition": "Dermatitis treatment",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Topical",
+    "indication": "Specialized therapeutic agent to combat severe dermatitis.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["spectrazole", "dermatitis", "zenex"]
+  },
+  {
+    "brandName": "Loamglo",
+    "genericName": "Herbal Bath Formulation",
+    "composition": "Herbal Bath Formulation",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Shampoo / Wash",
+    "indication": "Natural herbal therapy to cleanse the coat and soothe minor skin irritations.",
+    "category": "Dermatology / Immunomodulation",
+    "searchTerms": ["loamglo", "herbal bath", "zenex"]
+  },
+  {
+    "brandName": "Nutrical CA",
+    "genericName": "Calcium",
+    "composition": "Calcium (Syrup and Tablets)",
+    "manufacturer": "Zenex Animal Health",
+    "dosageForm": "Syrup / Tablet",
+    "indication": "Bioavailable calcium therapy for optimal skeletal density.",
+    "category": "Supplement",
+    "searchTerms": ["nutrical", "calcium", "zenex"]
+  }
+]
