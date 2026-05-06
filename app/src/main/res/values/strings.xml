@@ -79,6 +79,18 @@
     <string name="not_now">Not now</string>
     <string name="all_set">All set</string>
 
+    <!-- Onboarding permissions page -->
+    <string name="onboarding_perm_title">A few permissions, then we\'re set</string>
+    <string name="onboarding_perm_subtitle">PawPill works fully offline. These permissions only help us deliver reminders on time — nothing leaves your phone.</string>
+    <string name="onboarding_perm_notifications_why">So we can tap you on the shoulder the moment a dose is due. Without this, the app can\'t remind you at all.</string>
+    <string name="onboarding_perm_exact_alarms_why">Reminders need to fire at the precise minute you scheduled — not \"sometime in the next hour.\"</string>
+    <string name="onboarding_perm_battery_why">Some phones aggressively kill background apps. This stops Android from snoozing your reminders.</string>
+    <string name="onboarding_perm_allow">Allow</string>
+    <string name="onboarding_perm_granted">Granted</string>
+    <string name="onboarding_perm_allow_continue">Allow &amp; continue</string>
+    <string name="onboarding_perm_continue">Continue</string>
+    <string name="onboarding_perm_skip">Skip for now</string>
+
     <!-- Common -->
     <string name="loading">Loading…</string>
     <string name="back">Back</string>

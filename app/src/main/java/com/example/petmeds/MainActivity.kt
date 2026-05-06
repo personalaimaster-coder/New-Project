@@ -57,6 +57,7 @@ import com.example.petmeds.ui.onboarding.OnboardingPager
 import com.example.petmeds.ui.pets.PetEditorScreen
 import com.example.petmeds.ui.pets.PetProfileScreen
 import com.example.petmeds.ui.settings.SettingsScreen
+import com.example.petmeds.ui.splash.SplashScreen
 import com.example.petmeds.ui.theme.PetMedsTheme
 import com.example.petmeds.ui.timeline.TimelineScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -77,6 +78,7 @@ class MainActivity : ComponentActivity() {
 // ── Route constants ──────────────────────────────────────────────────────────
 
 private object Routes {
+    const val SPLASH          = "splash"
     const val ONBOARDING      = "onboarding"
     const val TODAY           = "today"
     const val MEDS            = "meds"
@@ -128,16 +130,6 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
     val showBottomBar = currentRoute in TABS.map { it.route }
     val showTopBar = currentRoute in TABS.map { it.route }
 
-    // Redirect to onboarding when there is no pet yet (only once count is known)
-    androidx.compose.runtime.LaunchedEffect(petCount) {
-        if (petCount == 0) {
-            nav.navigate(Routes.ONBOARDING) {
-                popUpTo(Routes.TODAY) { inclusive = false }
-                launchSingleTop = true
-            }
-        }
-    }
-
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,
@@ -169,9 +161,27 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
     ) { padding ->
         NavHost(
             navController = nav,
-            startDestination = Routes.TODAY,
+            startDestination = Routes.SPLASH,
             modifier = Modifier.padding(padding),
         ) {
+            composable(Routes.SPLASH) {
+                SplashScreen()
+                // Decide where to send the user only once petCount is known
+                // (-1 = still loading, 0 = first run, >0 = returning user).
+                LaunchedEffect(petCount) {
+                    when {
+                        petCount == 0 -> nav.navigate(Routes.ONBOARDING) {
+                            popUpTo(Routes.SPLASH) { inclusive = true }
+                            launchSingleTop = true
+                        }
+                        petCount > 0 -> nav.navigate(Routes.TODAY) {
+                            popUpTo(Routes.SPLASH) { inclusive = true }
+                            launchSingleTop = true
+                        }
+                    }
+                }
+            }
+
             composable(Routes.ONBOARDING) {
                 OnboardingPager(
                     onFinished = {

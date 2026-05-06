@@ -100,7 +100,7 @@ fun TimelineScreen(
 
     when {
         state.loading -> LoadingState()
-        !state.hasPet -> NoPetState()
+        !state.hasPet -> NoPetState(onAddMedication = onAddMedication)
         else -> TodayContent(
             state = state,
             onMarkTaken = viewModel::markTaken,
@@ -126,10 +126,15 @@ private fun LoadingState() {
     }
 }
 
+/**
+ * Fallback shown when the timeline mounts before the splash decision has
+ * sent the user to onboarding. Renders the friendly welcome card instead of
+ * a bare spinner so any nav glitch still gives the user something to act on.
+ */
 @Composable
-private fun NoPetState() {
+private fun NoPetState(onAddMedication: () -> Unit) {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        androidx.compose.material3.CircularProgressIndicator()
+        EmptyTodayState(onAdd = onAddMedication)
     }
 }
 

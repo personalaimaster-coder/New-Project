@@ -1,5 +1,9 @@
 package com.example.petmeds.ui.onboarding
 
+import android.Manifest
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -27,7 +31,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.CalendarToday
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -41,6 +50,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -53,16 +63,25 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.petmeds.R
 import com.example.petmeds.domain.model.Species
 import com.example.petmeds.ui.common.PawPillWordmark
 import com.example.petmeds.ui.meds.DatePickerDialog
+import com.example.petmeds.ui.permissions.PermissionChecks
+import com.example.petmeds.ui.permissions.PermissionsState
 import com.example.petmeds.ui.pets.FirstRunPetViewModel
 import com.example.petmeds.ui.theme.Brand
 import com.example.petmeds.ui.theme.BrandGradients
@@ -72,7 +91,9 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
-private val PAGE_COUNT = 3
+private const val PAGE_COUNT = 4
+private const val PAGE_PERMISSIONS = 2
+private const val PAGE_PET_INFO = 3
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -83,8 +104,38 @@ fun OnboardingPager(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val pagerState = rememberPagerState(pageCount = { PAGE_COUNT })
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    // Live permission state — re-read whenever the host returns from a system
+    // settings activity (exact alarms / battery exemption) so the UI updates
+    // without requiring the user to leave and re-enter onboarding.
+    var perms by remember { mutableStateOf(PermissionChecks.read(context)) }
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                perms = PermissionChecks.read(context)
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    val notifLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { perms = PermissionChecks.read(context) }
+
+    fun advance() {
+        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
+    }
+    fun goBack() {
+        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
+    }
 
     LaunchedEffect(state.saved) { if (state.saved) onFinished() }
+
+    val isPetInfoPage = pagerState.currentPage == PAGE_PET_INFO
+    val hideFloatingControls = isPetInfoPage
 
     Box(
         Modifier
@@ -110,7 +161,22 @@ fun OnboardingPager(
             when (page) {
                 0 -> OnboardingPage1()
                 1 -> OnboardingPage2()
-                2 -> OnboardingPage3(
+                PAGE_PERMISSIONS -> OnboardingPermissionsPage(
+                    perms = perms,
+                    onRequestNotifications = {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            notifLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        }
+                    },
+                    onRequestExactAlarms = {
+                        PermissionChecks.openExactAlarmSettings(context)
+                    },
+                    onRequestBattery = {
+                        PermissionChecks.requestIgnoreBatteryOptimizations(context)
+                    },
+                    onSkip = ::advance,
+                )
+                PAGE_PET_INFO -> OnboardingPetInfoPage(
                     parentName = state.parentName,
                     name = state.name,
                     species = state.species,
@@ -125,82 +191,102 @@ fun OnboardingPager(
                     onBreedChanged = viewModel::onBreedChanged,
                     onWeightChanged = viewModel::onWeightChanged,
                     onBirthDateChanged = viewModel::onBirthDateChanged,
+                    onBack = ::goBack,
+                    onSubmit = viewModel::submit,
                 )
             }
         }
 
-        // Dot indicators
-        Row(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 104.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            repeat(PAGE_COUNT) { i ->
-                val selected = i == pagerState.currentPage
-                val width by animateDpAsState(
-                    targetValue = if (selected) 24.dp else 8.dp,
-                    animationSpec = spring(),
-                    label = "dot-width",
-                )
-                Box(
-                    Modifier
-                        .height(8.dp)
-                        .width(width)
-                        .clip(RoundedCornerShape(4.dp))
-                        .background(
-                            if (selected) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.outline,
-                        ),
-                )
-            }
-        }
-
-        // Navigation buttons
-        Row(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 24.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            if (pagerState.currentPage > 0) {
-                TextButton(
-                    onClick = { scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) } },
-                    modifier = Modifier.weight(1f),
-                ) { Text("Back") }
-            } else {
-                Spacer(Modifier.weight(1f))
-            }
-            Button(
-                onClick = {
-                    if (pagerState.currentPage < PAGE_COUNT - 1) {
-                        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
-                    } else {
-                        viewModel.submit()
-                    }
-                },
-                enabled = !state.saving,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary,
-                ),
-                shape = RoundedCornerShape(16.dp),
+        if (!hideFloatingControls) {
+            // Dot indicators
+            Row(
                 modifier = Modifier
-                    .weight(1.5f)
-                    .height(56.dp),
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 104.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                if (state.saving && pagerState.currentPage == PAGE_COUNT - 1) {
-                    CircularProgressIndicator(
-                        strokeWidth = 2.dp,
-                        color = Color.White,
-                        modifier = Modifier.size(22.dp),
+                repeat(PAGE_COUNT) { i ->
+                    val selected = i == pagerState.currentPage
+                    val width by animateDpAsState(
+                        targetValue = if (selected) 24.dp else 8.dp,
+                        animationSpec = spring(),
+                        label = "dot-width",
                     )
+                    Box(
+                        Modifier
+                            .height(8.dp)
+                            .width(width)
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(
+                                if (selected) MaterialTheme.colorScheme.primary
+                                else MaterialTheme.colorScheme.outline,
+                            ),
+                    )
+                }
+            }
+
+            // Navigation buttons
+            Row(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 24.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                if (pagerState.currentPage > 0) {
+                    TextButton(
+                        onClick = ::goBack,
+                        modifier = Modifier.weight(1f),
+                    ) { Text("Back") }
                 } else {
-                    Text(
-                        if (pagerState.currentPage < PAGE_COUNT - 1) "Next" else "Get started",
-                        style = MaterialTheme.typography.labelLarge,
-                    )
+                    Spacer(Modifier.weight(1f))
+                }
+
+                val isPermissionsPage = pagerState.currentPage == PAGE_PERMISSIONS
+                val isFinalPage = pagerState.currentPage == PAGE_COUNT - 1
+                val ctaLabel = when {
+                    isFinalPage -> "Get started"
+                    isPermissionsPage && perms.allReady -> stringResource(R.string.onboarding_perm_continue)
+                    isPermissionsPage -> stringResource(R.string.onboarding_perm_allow_continue)
+                    else -> "Next"
+                }
+                Button(
+                    onClick = {
+                        when {
+                            isFinalPage -> viewModel.submit()
+                            isPermissionsPage && !perms.notificationsGranted -> {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                    notifLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                } else {
+                                    advance()
+                                }
+                            }
+                            isPermissionsPage && !perms.exactAlarmsAllowed ->
+                                PermissionChecks.openExactAlarmSettings(context)
+                            isPermissionsPage && !perms.ignoringBatteryOptimizations ->
+                                PermissionChecks.requestIgnoreBatteryOptimizations(context)
+                            else -> advance()
+                        }
+                    },
+                    enabled = !state.saving,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .weight(1.5f)
+                        .height(56.dp),
+                ) {
+                    if (state.saving && isFinalPage) {
+                        CircularProgressIndicator(
+                            strokeWidth = 2.dp,
+                            color = Color.White,
+                            modifier = Modifier.size(22.dp),
+                        )
+                    } else {
+                        Text(ctaLabel, style = MaterialTheme.typography.labelLarge)
+                    }
                 }
             }
         }
@@ -229,7 +315,7 @@ private fun OnboardingPage2() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun OnboardingPage3(
+private fun OnboardingPetInfoPage(
     parentName: String,
     name: String,
     species: Species,
@@ -244,6 +330,8 @@ private fun OnboardingPage3(
     onBreedChanged: (String) -> Unit,
     onWeightChanged: (String) -> Unit,
     onBirthDateChanged: (LocalDate?) -> Unit,
+    onBack: () -> Unit,
+    onSubmit: () -> Unit,
 ) {
     var showDatePicker by remember { mutableStateOf(false) }
     val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
@@ -269,7 +357,7 @@ private fun OnboardingPage3(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 32.dp)
-            .padding(top = 96.dp, bottom = 160.dp),
+            .padding(top = 96.dp, bottom = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
@@ -427,6 +515,233 @@ private fun OnboardingPage3(
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp),
                 )
+            }
+        }
+
+        // Inline dot indicators
+        Spacer(Modifier.height(8.dp))
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+        ) {
+            repeat(PAGE_COUNT) { i ->
+                val selected = i == PAGE_PET_INFO
+                val dotWidth by animateDpAsState(
+                    targetValue = if (selected) 24.dp else 8.dp,
+                    animationSpec = spring(),
+                    label = "inline-dot",
+                )
+                Box(
+                    Modifier
+                        .height(8.dp)
+                        .width(dotWidth)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(
+                            if (selected) MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.outline,
+                        ),
+                )
+            }
+        }
+
+        // Inline navigation buttons
+        Spacer(Modifier.height(8.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            TextButton(
+                onClick = onBack,
+                modifier = Modifier.weight(1f),
+            ) { Text("Back") }
+            Button(
+                onClick = onSubmit,
+                enabled = !saving,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
+                ),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .weight(1.5f)
+                    .height(56.dp),
+            ) {
+                if (saving) {
+                    CircularProgressIndicator(
+                        strokeWidth = 2.dp,
+                        color = Color.White,
+                        modifier = Modifier.size(22.dp),
+                    )
+                } else {
+                    Text("Get started", style = MaterialTheme.typography.labelLarge)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun OnboardingPermissionsPage(
+    perms: PermissionsState,
+    onRequestNotifications: () -> Unit,
+    onRequestExactAlarms: () -> Unit,
+    onRequestBattery: () -> Unit,
+    onSkip: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 28.dp)
+            .padding(top = 96.dp, bottom = 160.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        Box(
+            Modifier
+                .size(96.dp)
+                .clip(CircleShape)
+                .background(BrandGradients.OnboardingFresh),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text("🔔", fontSize = 44.sp)
+        }
+        Text(
+            stringResource(R.string.onboarding_perm_title),
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.ExtraBold,
+            color = Brand.DarkBlue,
+            textAlign = TextAlign.Center,
+        )
+        Text(
+            stringResource(R.string.onboarding_perm_subtitle),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+        )
+
+        Spacer(Modifier.height(4.dp))
+
+        PermissionExplainerRow(
+            icon = Icons.Filled.Notifications,
+            title = stringResource(R.string.perm_notifications_title),
+            why = stringResource(R.string.onboarding_perm_notifications_why),
+            granted = perms.notificationsGranted,
+            onAllow = onRequestNotifications,
+        )
+        PermissionExplainerRow(
+            icon = Icons.Filled.Schedule,
+            title = stringResource(R.string.perm_exact_alarms_title),
+            why = stringResource(R.string.onboarding_perm_exact_alarms_why),
+            granted = perms.exactAlarmsAllowed,
+            onAllow = onRequestExactAlarms,
+        )
+        PermissionExplainerRow(
+            icon = Icons.Filled.Bolt,
+            title = stringResource(R.string.perm_battery_title),
+            why = stringResource(R.string.onboarding_perm_battery_why),
+            granted = perms.ignoringBatteryOptimizations,
+            onAllow = onRequestBattery,
+        )
+
+        Spacer(Modifier.height(4.dp))
+
+        TextButton(
+            onClick = onSkip,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(
+                stringResource(R.string.onboarding_perm_skip),
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    }
+}
+
+@Composable
+private fun PermissionExplainerRow(
+    icon: ImageVector,
+    title: String,
+    why: String,
+    granted: Boolean,
+    onAllow: () -> Unit,
+) {
+    Surface(
+        shape = RoundedCornerShape(18.dp),
+        color = MaterialTheme.colorScheme.surface,
+        tonalElevation = 0.dp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(
+                width = 1.dp,
+                color = if (granted) Brand.Sage else MaterialTheme.colorScheme.outlineVariant,
+                shape = RoundedCornerShape(18.dp),
+            ),
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(
+                        if (granted) Brand.Sage.copy(alpha = 0.25f)
+                        else MaterialTheme.colorScheme.primaryContainer,
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = if (granted) Icons.Filled.CheckCircle else icon,
+                    contentDescription = null,
+                    tint = if (granted) Brand.SageDark
+                    else MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
+            Column(
+                Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(
+                    title,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Text(
+                    why,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            if (granted) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Icon(
+                        Icons.Filled.Check,
+                        contentDescription = null,
+                        tint = Brand.SageDark,
+                        modifier = Modifier.size(16.dp),
+                    )
+                    Text(
+                        stringResource(R.string.onboarding_perm_granted),
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Brand.SageDark,
+                    )
+                }
+            } else {
+                TextButton(onClick = onAllow) {
+                    Text(
+                        stringResource(R.string.onboarding_perm_allow),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                }
             }
         }
     }
