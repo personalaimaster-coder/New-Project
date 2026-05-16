@@ -10,23 +10,50 @@ import androidx.sqlite.db.SupportSQLiteDatabase
     entities = [
         PetEntity::class,
         CourseEntity::class,
+        CourseNoteEntity::class,
         MedicationEntity::class,
         DoseLogEntity::class,
         ScheduledAlarmEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = false,
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun petDao(): PetDao
     abstract fun courseDao(): CourseDao
+    abstract fun courseNoteDao(): CourseNoteDao
     abstract fun medicationDao(): MedicationDao
     abstract fun doseLogDao(): DoseLogDao
     abstract fun scheduledAlarmDao(): ScheduledAlarmDao
 
     companion object {
         const val NAME = "petmeds.db"
+
+        val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS course_notes (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        courseId INTEGER NOT NULL,
+                        occurredAt INTEGER NOT NULL,
+                        category TEXT NOT NULL,
+                        body TEXT NOT NULL,
+                        photoPath TEXT,
+                        createdAt INTEGER NOT NULL,
+                        updatedAt INTEGER NOT NULL,
+                        FOREIGN KEY(courseId) REFERENCES courses(id) ON DELETE CASCADE
+                    )
+                    """.trimIndent()
+                )
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_course_notes_courseId ON course_notes(courseId)")
+                db.execSQL(
+                    "CREATE INDEX IF NOT EXISTS index_course_notes_courseId_occurredAt " +
+                            "ON course_notes(courseId, occurredAt)"
+                )
+            }
+        }
 
         val MIGRATION_2_3: Migration = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {

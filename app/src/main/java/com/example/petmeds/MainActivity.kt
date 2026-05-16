@@ -12,10 +12,12 @@ import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Medication
 import androidx.compose.material.icons.filled.Pets
+import androidx.compose.material.icons.filled.SportsEsports
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.Pets
+import androidx.compose.material.icons.outlined.SportsEsports
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -53,8 +55,10 @@ import com.example.petmeds.ui.meds.MedEditorScreen
 import com.example.petmeds.ui.meds.MedicationDetailScreen
 import com.example.petmeds.ui.meds.MedsListScreen
 import com.example.petmeds.ui.meds.OcrReviewScreen
+import com.example.petmeds.ui.meds.notes.NoteEditorScreen
 import com.example.petmeds.ui.onboarding.OnboardingPager
 import com.example.petmeds.ui.pets.PetEditorScreen
+import com.example.petmeds.ui.play.PlayScreen
 import com.example.petmeds.ui.pets.PetProfileScreen
 import com.example.petmeds.ui.settings.SettingsScreen
 import com.example.petmeds.ui.splash.SplashScreen
@@ -90,7 +94,10 @@ private object Routes {
     const val COURSE_NEW      = "course_new"
     const val COURSE_EDIT     = "course_edit/{id}"
     const val COURSE_DETAIL   = "course_detail/{id}"
+    const val NOTE_NEW        = "note_new/{courseId}"
+    const val NOTE_EDIT       = "note_edit/{noteId}"
     const val HISTORY         = "history"
+    const val PLAY            = "play"
     const val PET             = "pet"
     const val PET_EDIT        = "pet_edit"
     const val SETTINGS        = "settings"
@@ -100,6 +107,8 @@ private object Routes {
     fun medDetail(id: Long) = "med_detail/$id"
     fun courseEdit(id: Long) = "course_edit/$id"
     fun courseDetail(id: Long) = "course_detail/$id"
+    fun noteNew(courseId: Long) = "note_new/$courseId"
+    fun noteEdit(noteId: Long) = "note_edit/$noteId"
     fun ocrReview(imageUri: Uri) = "ocr_review/${Uri.encode(imageUri.toString())}"
 }
 
@@ -111,10 +120,11 @@ private data class TabItem(
 )
 
 private val TABS = listOf(
-    TabItem(Routes.TODAY, "Today",       Icons.Filled.Home,       Icons.Outlined.Home),
-    TabItem(Routes.MEDS,  "Medications", Icons.Filled.Medication,  Icons.Outlined.Medication),
-    TabItem(Routes.HISTORY, "History",    Icons.Filled.History,     Icons.Outlined.History),
-    TabItem(Routes.PET,   "Pet",         Icons.Filled.Pets,        Icons.Outlined.Pets),
+    TabItem(Routes.TODAY, "Today",       Icons.Filled.Home,         Icons.Outlined.Home),
+    TabItem(Routes.MEDS,  "Medications", Icons.Filled.Medication,    Icons.Outlined.Medication),
+    TabItem(Routes.HISTORY, "History",   Icons.Filled.History,       Icons.Outlined.History),
+    TabItem(Routes.PLAY,  "Play",        Icons.Filled.SportsEsports, Icons.Outlined.SportsEsports),
+    TabItem(Routes.PET,   "Pet",         Icons.Filled.Pets,          Icons.Outlined.Pets),
 )
 
 // ── Root navigation ──────────────────────────────────────────────────────────
@@ -212,6 +222,8 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                     },
                     onAddCourse = { nav.navigate(Routes.COURSE_NEW) },
                     onOpenMedication = { id -> nav.navigate(Routes.medDetail(id)) },
+                    onOpenCourse = { id -> nav.navigate(Routes.courseDetail(id)) },
+                    onAddCourseNote = { id -> nav.navigate(Routes.noteNew(id)) },
                 )
             }
 
@@ -220,6 +232,10 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                     onOpenMedication = { id -> nav.navigate(Routes.medDetail(id)) },
                     onOpenCourse = { id -> nav.navigate(Routes.courseDetail(id)) },
                 )
+            }
+
+            composable(Routes.PLAY) {
+                PlayScreen()
             }
 
             composable(Routes.MED_ADD_CHOOSER) {
@@ -332,6 +348,31 @@ private fun AppNav(viewModel: AppNavViewModel = hiltViewModel()) {
                     onEdit = { id -> nav.navigate(Routes.courseEdit(id)) },
                     onOpenMedication = { id -> nav.navigate(Routes.medDetail(id)) },
                     onAddMedication = { nav.navigate(Routes.medNew(courseId)) },
+                    onAddNote = { id -> nav.navigate(Routes.noteNew(id)) },
+                    onEditNote = { id -> nav.navigate(Routes.noteEdit(id)) },
+                )
+            }
+
+            composable(
+                route = Routes.NOTE_NEW,
+                arguments = listOf(navArgument("courseId") { type = NavType.LongType }),
+            ) { entry ->
+                val courseId = entry.arguments?.getLong("courseId") ?: -1L
+                NoteEditorScreen(
+                    courseId = courseId,
+                    noteId = null,
+                    onClose = { nav.popBackStack() },
+                )
+            }
+
+            composable(
+                route = Routes.NOTE_EDIT,
+                arguments = listOf(navArgument("noteId") { type = NavType.LongType }),
+            ) { entry ->
+                NoteEditorScreen(
+                    courseId = 0L,
+                    noteId = entry.arguments?.getLong("noteId"),
+                    onClose = { nav.popBackStack() },
                 )
             }
 

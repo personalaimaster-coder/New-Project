@@ -27,7 +27,10 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.filled.SportsEsports
+import androidx.compose.material.icons.filled.Vibration
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
@@ -39,6 +42,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -71,6 +75,8 @@ fun SettingsScreen(
         mutableStateOf(PermissionChecks.read(context))
     }
     val parentName by viewModel.parentName.collectAsStateWithLifecycle()
+    val gameSoundEnabled by viewModel.gameSoundEnabled.collectAsStateWithLifecycle()
+    val gameHapticsEnabled by viewModel.gameHapticsEnabled.collectAsStateWithLifecycle()
     var editing by remember { mutableStateOf(false) }
 
     val notifLauncher = rememberLauncherForActivityResult(
@@ -128,6 +134,15 @@ fun SettingsScreen(
                 onRequestBattery = {
                     PermissionChecks.requestIgnoreBatteryOptimizations(context)
                 },
+            )
+
+            // Game section
+            SectionHeader("Game")
+            GameCard(
+                soundEnabled = gameSoundEnabled,
+                hapticsEnabled = gameHapticsEnabled,
+                onToggleSound = viewModel::setGameSoundEnabled,
+                onToggleHaptics = viewModel::setGameHapticsEnabled,
             )
 
             // About section
@@ -315,6 +330,73 @@ private fun PermRow(
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun GameCard(
+    soundEnabled: Boolean,
+    hapticsEnabled: Boolean,
+    onToggleSound: (Boolean) -> Unit,
+    onToggleHaptics: (Boolean) -> Unit,
+) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(Modifier.padding(vertical = 4.dp)) {
+            GameToggleRow(
+                icon = Icons.Filled.SportsEsports,
+                label = "Treat Catcher",
+                trailing = null,
+            )
+            GameToggleRow(
+                icon = Icons.AutoMirrored.Filled.VolumeUp,
+                label = "Game sound",
+                trailing = {
+                    Switch(
+                        checked = soundEnabled,
+                        onCheckedChange = onToggleSound,
+                    )
+                },
+            )
+            GameToggleRow(
+                icon = Icons.Filled.Vibration,
+                label = "Game vibration",
+                trailing = {
+                    Switch(
+                        checked = hapticsEnabled,
+                        onCheckedChange = onToggleHaptics,
+                    )
+                },
+            )
+        }
+    }
+}
+
+@Composable
+private fun GameToggleRow(
+    icon: ImageVector,
+    label: String,
+    trailing: (@Composable () -> Unit)?,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(14.dp),
+    ) {
+        Icon(
+            icon,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.size(20.dp),
+        )
+        Text(label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+        if (trailing != null) trailing()
     }
 }
 

@@ -102,6 +102,7 @@ dependencies {
 
     implementation(libs.coil.compose)
     implementation(libs.androidx.biometric)
+    implementation(libs.androidx.exifinterface)
     implementation(libs.mlkit.text.recognition)
 
     debugImplementation(libs.androidx.compose.ui.tooling)

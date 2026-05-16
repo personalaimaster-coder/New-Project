@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
     <cache-path name="ocr_images" path="ocr_captures/" />
+    <cache-path name="course_reports" path="course_reports/" />
+    <cache-path name="note_captures" path="note_captures/" />
+    <files-path name="course_notes" path="course_notes/" />
 </paths>

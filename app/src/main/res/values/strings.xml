@@ -98,4 +98,29 @@
     <string name="pet_avatar_content_description">Pet avatar</string>
     <string name="error_required">This field is required</string>
     <string name="error_dosage_invalid">Enter a positive number</string>
+
+    <!-- Course progress notes -->
+    <string name="progress_notes_title">Progress notes</string>
+    <string name="add_note">Add note</string>
+    <string name="new_note">New note</string>
+    <string name="edit_note">Edit note</string>
+    <string name="note_body_label">Note</string>
+    <string name="note_body_placeholder">What did you observe? Symptoms, side effects, vet feedback…</string>
+    <string name="note_when_label">When</string>
+    <string name="note_category_label">Category</string>
+    <string name="note_category_observation">Observation</string>
+    <string name="note_category_symptom">Symptom</string>
+    <string name="note_category_side_effect">Side effect</string>
+    <string name="note_category_vet_visit">Vet visit</string>
+    <string name="note_photo_label">Photo</string>
+    <string name="note_photo_add">Add photo</string>
+    <string name="note_photo_remove">Remove photo</string>
+    <string name="notes_empty_title">No progress notes yet</string>
+    <string name="notes_empty_subtitle">Log observations, symptoms, or vet feedback so you can show progress over time.</string>
+
+    <!-- Course PDF report -->
+    <string name="generate_pdf_report">Generate PDF report</string>
+    <string name="report_generating">Preparing report…</string>
+    <string name="report_share_title">Share course report</string>
+    <string name="report_failed">Could not generate report. Please try again.</string>
 </resources>

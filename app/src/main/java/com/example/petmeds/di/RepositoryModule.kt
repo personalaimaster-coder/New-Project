@@ -1,5 +1,7 @@
 package com.example.petmeds.di
 
+import com.example.petmeds.data.repo.CourseNoteRepository
+import com.example.petmeds.data.repo.CourseNoteRepositoryImpl
 import com.example.petmeds.data.repo.CourseRepository
 import com.example.petmeds.data.repo.CourseRepositoryImpl
 import com.example.petmeds.data.repo.DoseLogRepository
@@ -18,6 +20,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class RepositoryModule {
     @Binds abstract fun bindPetRepository(impl: PetRepositoryImpl): PetRepository
     @Binds abstract fun bindCourseRepository(impl: CourseRepositoryImpl): CourseRepository
+    @Binds abstract fun bindCourseNoteRepository(impl: CourseNoteRepositoryImpl): CourseNoteRepository
     @Binds abstract fun bindMedicationRepository(impl: MedicationRepositoryImpl): MedicationRepository
     @Binds abstract fun bindDoseLogRepository(impl: DoseLogRepositoryImpl): DoseLogRepository
 }

@@ -18,9 +18,23 @@ class SettingsViewModel @Inject constructor(
     val parentName: StateFlow<String?> = userPrefsRepository.observeParentName()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
+    val gameSoundEnabled: StateFlow<Boolean> = userPrefsRepository.observeGameSoundEnabled()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), true)
+
+    val gameHapticsEnabled: StateFlow<Boolean> = userPrefsRepository.observeGameHapticsEnabled()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), true)
+
     fun updateParentName(value: String?) {
         viewModelScope.launch {
             userPrefsRepository.setParentName(value)
         }
+    }
+
+    fun setGameSoundEnabled(enabled: Boolean) {
+        viewModelScope.launch { userPrefsRepository.setGameSoundEnabled(enabled) }
+    }
+
+    fun setGameHapticsEnabled(enabled: Boolean) {
+        viewModelScope.launch { userPrefsRepository.setGameHapticsEnabled(enabled) }
     }
 }

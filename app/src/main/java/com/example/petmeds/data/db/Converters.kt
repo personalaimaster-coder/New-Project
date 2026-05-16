@@ -4,6 +4,7 @@ import androidx.room.TypeConverter
 import com.example.petmeds.domain.model.DoseStatus
 import com.example.petmeds.domain.model.LifecycleStatus
 import com.example.petmeds.domain.model.MedForm
+import com.example.petmeds.domain.model.NoteCategory
 import com.example.petmeds.domain.model.Species
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -46,4 +47,11 @@ class Converters {
     @TypeConverter
     fun stringToLifecycleStatus(value: String?): LifecycleStatus? =
         value?.let { LifecycleStatus.valueOf(it) }
+
+    @TypeConverter
+    fun noteCategoryToString(value: NoteCategory?): String? = value?.name
+
+    @TypeConverter
+    fun stringToNoteCategory(value: String?): NoteCategory? =
+        value?.let { NoteCategory.valueOf(it) }
 }

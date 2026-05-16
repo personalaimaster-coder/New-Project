@@ -22,9 +22,12 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.NoteAdd
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Medication
 import androidx.compose.material.icons.filled.MoreVert
@@ -79,6 +82,8 @@ fun MedsListScreen(
     onAddMedication: (courseId: Long?) -> Unit,
     onAddCourse: () -> Unit,
     onOpenMedication: (Long) -> Unit,
+    onOpenCourse: (Long) -> Unit,
+    onAddCourseNote: (Long) -> Unit,
     viewModel: MedsListViewModel = hiltViewModel(),
 ) {
     val sections by viewModel.sections.collectAsStateWithLifecycle()
@@ -138,6 +143,8 @@ fun MedsListScreen(
                     stickyHeader(key = "course-${section.course?.id ?: 0L}") {
                         CourseHeader(
                             section = section,
+                            onOpenCourse = onOpenCourse,
+                            onAddCourseNote = onAddCourseNote,
                             onCompleteCourse = { id -> viewModel.markCourseComplete(id) },
                         )
                     }
@@ -206,15 +213,21 @@ fun MedsListScreen(
 @Composable
 private fun CourseHeader(
     section: CourseSection,
+    onOpenCourse: (Long) -> Unit,
+    onAddCourseNote: (Long) -> Unit,
     onCompleteCourse: (Long) -> Unit,
 ) {
     var menuExpanded by remember { mutableStateOf(false) }
     val course = section.course
     SurfaceHeader {
+        val rowModifier = Modifier
+            .fillMaxWidth()
+            .let { base ->
+                if (course != null) base.clickable { onOpenCourse(course.id) } else base
+            }
+            .padding(horizontal = 20.dp, vertical = 10.dp)
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 10.dp),
+            modifier = rowModifier,
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -236,12 +249,18 @@ private fun CourseHeader(
                         append("${section.medications.size} medication")
                         if (section.medications.size != 1) append("s")
                         course?.endDate?.let { append(" · Until $it") }
+                        if (course != null) append(" · Tap to open")
                     },
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
             if (course != null) {
+                Icon(
+                    Icons.Filled.ChevronRight,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
                 Box {
                     IconButton(onClick = { menuExpanded = true }) {
                         Icon(Icons.Filled.MoreVert, contentDescription = "Course actions")
@@ -250,6 +269,22 @@ private fun CourseHeader(
                         expanded = menuExpanded,
                         onDismissRequest = { menuExpanded = false },
                     ) {
+                        DropdownMenuItem(
+                            text = { Text("Add progress note") },
+                            leadingIcon = { Icon(Icons.AutoMirrored.Filled.NoteAdd, contentDescription = null) },
+                            onClick = {
+                                menuExpanded = false
+                                onAddCourseNote(course.id)
+                            },
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Open course (notes & report)") },
+                            leadingIcon = { Icon(Icons.Filled.Description, contentDescription = null) },
+                            onClick = {
+                                menuExpanded = false
+                                onOpenCourse(course.id)
+                            },
+                        )
                         DropdownMenuItem(
                             text = { Text("Mark course complete") },
                             leadingIcon = { Icon(Icons.Filled.DoneAll, contentDescription = null) },
